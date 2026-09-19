@@ -1,0 +1,4 @@
+# Project-path copy. Crawlers use origin /robots.txt; see README.
+User-agent: *
+Allow: /
+Sitemap: https://mementoaicompany-lab.github.io/udosignature/sitemap.xml

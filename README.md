@@ -1,0 +1,80 @@
+# udosignature — 코코나라 신규 SEO 홈페이지
+
+브랜드·운영업체는 **코코나라**입니다. `udosignature`는 프로젝트와 저장소 이름이며 별도 렌탈업체나 구매 도메인이 아닙니다.
+
+## 독립된 위치와 배포 대상
+
+| 구분 | 로컬 위치 | 원격·배포 대상 |
+|---|---|---|
+| 새 프로젝트 | `/Users/kimjiwon/Documents/Codex/2026-09-20/seo-udosignature-1-https-mementoaicompany-lab/outputs/udosignature` | `https://github.com/mementoaicompany-lab/udosignature` → `https://mementoaicompany-lab.github.io/udosignature/` |
+| 기존 소스(읽기 참고만) | `/Users/kimjiwon/Documents/Codex/2026-09-07/new-chat/work/coconara-reset/` | 기존 `mementoaicompany-lab/coconara` 저장소 |
+| 기존 빌드(읽기 참고만) | `/Users/kimjiwon/Documents/Codex/2026-09-07/new-chat/outputs/coconara-reset/` | `https://mementoaicompany-lab.github.io/coconara/` |
+| 기존 Sites 프로젝트(읽기 참고만) | `/Users/kimjiwon/Documents/Codex/2026-09-07/new-chat/work/coconara/site/` | `https://coconara-udo-guide.mementoaicompany.chatgpt.site/` |
+| 기존 완료 기록(읽기 참고만) | `/Users/kimjiwon/Documents/Codex/2026-09-07/new-chat/work/coconara-v27/` | 신규 배포에 사용하지 않음 |
+
+새 폴더에서 새 Git 이력을 만들었습니다. 기존 `.git`, `.openai/hosting.json`, CNAME, 배포 자격증명, Firebase 설정은 복사하지 않았습니다. 새 사이트 배포 설정은 **udosignature → Settings → Pages → main /docs**입니다. 기존 저장소·Sites 배포는 이 설정과 연결되지 않습니다. GitHub Pages 도메인의 호스트만 공유합니다.
+
+구매 도메인 `.com`/`.kr`은 미정입니다. `github.com/.../udosignature`는 코드 저장소, `mementoaicompany-lab.github.io/udosignature/`는 공개 홈페이지입니다.
+
+## 수정과 빌드
+
+외부 패키지 없이 Python 3 표준 라이브러리만 사용합니다.
+
+```sh
+python3 build.py
+python3 scripts/check.py
+```
+
+- `site.config.json`: baseUrl, 예약·문의·고객 안내 링크, 사업자 정보, 검색 소유확인, 분석 설정의 단일 관리 지점.
+- `src/`: 각 페이지의 독립 콘텐츠.
+- `assets/`: 스타일, 작은 메뉴·이벤트 스크립트, 사진.
+- `docs/`: GitHub Pages에 공개되는 정적 결과물. 생성 파일도 함께 커밋합니다.
+- `/guide/`: 기존 고객 안내로 연결하는 짧은 페이지. `noindex, follow`, 사이트맵 제외.
+- `404.html`: 사용자용 오류 안내와 정상 사이트 복귀 링크. `noindex, follow`.
+
+수정 후 빌드·검수하고 **이 프로젝트 폴더에서만** 커밋·푸시합니다. 배포 전 `git remote -v`가 `mementoaicompany-lab/udosignature.git`인지 확인하세요. 다른 저장소 URL을 추가하지 마세요. `scripts/publish.sh`는 원격·baseUrl이 정확히 일치할 때만 현재 커밋을 푸시합니다. 최초 게시는 로그인된 GitHub 웹 UI의 소스 압축 업로드와 저장소 내부 일회성 초기화 workflow로 진행합니다. CLI 인증은 저장하지 않았습니다. 이후 로컬 push에는 별도의 GitHub 인증이 필요합니다.
+
+도메인 변경 시 `site.config.json`의 `baseUrl`을 변경하고 빌드하면 링크·canonical·OG·사이트맵이 함께 갱신됩니다. 단, 배포 대상과 DNS/CNAME 변경은 별도 작업이며 현재 설정에는 CNAME이 없습니다.
+
+## SEO와 콘텐츠
+
+한국어 정적 HTML 4페이지는 각각 고유 title, description, H1, canonical, Open Graph/X 메타, 내부 링크를 갖습니다. `Organization`, `WebSite`, `WebPage`, 상세 페이지 `BreadcrumbList` JSON-LD를 사용합니다. 확인되지 않은 가격·후기·평점·순위·인증·영업시간·상세 주소를 구조화 데이터에 넣지 않았습니다. 사업장 전체 정보가 없으므로 LocalBusiness의 불완전한 상세 주소를 만들지 않고 Organization을 사용합니다.
+
+한국어 SEO 우선으로 신규 콘텐츠는 한국어입니다. 언어 버튼은 기존 6개 언어 고객 안내의 연결 페이지로 이동합니다. 신규 페이지의 번역을 제공한다고 표시하거나 잘못된 hreflang을 만들지 않습니다. 추후 실제 번역 페이지를 추가할 때 언어별 URL과 자기참조·상호참조 hreflang을 함께 생성하세요.
+
+### GitHub 프로젝트 경로의 robots 한계
+
+`/udosignature/robots.txt`를 생성했지만 **크롤러는 호스트 루트 `/robots.txt`만 읽습니다.** 하위경로 robots는 루트 설정을 대체하지 않습니다. 확인 당시 `https://mementoaicompany-lab.github.io/robots.txt`는 404였습니다. robots 부재는 수집 차단을 뜻하지 않습니다. 기존 호스트 루트나 다른 저장소를 변경하지 않았습니다.
+
+네이버 서치어드바이저는 호스트 단위로 등록합니다. 현재 프로젝트 경로만의 소유확인이 제한되면 기존 호스트 관리 권한으로 사이트맵을 제출하거나 향후 자체 도메인에서 소유확인해야 합니다. 호스트 루트에 파일·메타태그를 넣어야 한다면 기존 사이트 변경 금지 범위와 충돌할 수 있으므로 별도 작업으로 판단하세요. `site.config.json`의 verification 값은 새 프로젝트에만 적용됩니다.
+
+근거: [네이버 robots 안내](https://searchadvisor.naver.com/guide/seo-basic-robots), [사이트 제작 안내](https://searchadvisor.naver.com/guide/seo-basic-create), [호스트 단위 진단](https://searchadvisor.naver.com/diagnose).
+
+## 분석과 전환의 분리
+
+`assets/site.js`는 `udosignature:conversion` CustomEvent와 `window.udosignatureEvents`(최대 100개, 메모리만)를 제공합니다. 이벤트: booking_click, vehicle_detail_click, map_click, guide_click, inquiry_click, language_guide_click. 각 이벤트에 site, page, vehicle, placement를 기록합니다.
+
+현재 외부 분석 서비스는 연결하지 않았습니다. 네트워크 전송, 쿠키, localStorage, 사용자 식별값, 기존 방문자 카운터·Firebase 읽기/쓰기가 없습니다. URL 쿼리·전화번호 등 개인정보도 이벤트에 포함하지 않습니다. 분석 도입 시 udosignature 전용 속성·이벤트를 연결하세요. **스마트스토어 이동 클릭은 예약 결제 완료가 아닙니다.** 외부 구매완료 전환 추적은 별도 연동 가능 여부 확인이 필요합니다.
+
+## 확인 자료와 입력할 정보
+
+2026-09-20 확인: 기존 GitHub 실시간 HTML은 제공한 2026-09-13 완료본과 바이트 단위 일치. 기존 원격 저장소 최종 push는 2026-09-12 17:56:30 UTC. 기존 Sites URL은 자동 HTTP 요청에서 401이어서 이번 검사로 정상 공개 접근을 확정하지 못했습니다. 새 고객 안내 링크는 실제 HTTP 200이 확인된 기존 GitHub 주소를 사용합니다.
+
+예약 상품 URL은 기존 공개 HTML에 있는 `https://smartstore.naver.com/udorent/products/5482331427`입니다. 네이버 톡톡도 기존 링크입니다. 지도는 ‘우도 코코나라’ 네이버 지도 검색 링크이며 특정 미확인 장소 ID를 만들지 않았습니다.
+
+소유자가 확인할 항목:
+
+- 대표자, 사업자등록번호, 사업장 전체 주소, 일반 문의 전화번호.
+- 통신판매업 신고번호(해당 여부 포함), 운영시간.
+- 파미의 85kg·180cm 기준 간 적용 관계와 운전자/동승자 적용 범위.
+- 현재 차량 실물·고화질 사진, 특히 핑크 신형 오픈카 사진.
+- 현재 가격·옵션·재고 및 예약 상품의 이용조건, 외국 면허 인정 서류.
+- 공식 블로그·유튜브 채널 URL. 기존 영상 임베드를 공식 채널로 추정하지 않음.
+
+사이트 footer는 미확인 사업자 항목을 ‘입력 필요’로 표시합니다. 광고 심사 전에 완성해야 합니다. 기존 0507 번호는 ‘긴급전화’로만 확인되어 일반 문의 전화로 단정하지 않았습니다.
+
+## 사진 출처
+
+차량 3종: 사용자가 재사용을 허용한 기존 코코나라 GIF의 첫 프레임. WebP로 압축했고 CSS에서 사진 부분이 보이도록 표시합니다. 원본에 있던 이용제한은 HTML 텍스트로 별도 제공. 오픈카는 참고 사진임을 명시합니다.
+
+하우목동항 주변: 제주영상문화산업진흥원, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Udo,_Jeju_Province,_South_Korea_01.jpg), [공공누리 제1유형](https://www.kogl.or.kr/info/licenseType1.do). 하고수동·비양도: 제주관광공사, [Visitjeju.net](https://www.visitjeju.net/photojeju), 이전 photo-credits.json의 사용제한 없음·출처표기 조건 확인. 크기 조정·WebP 압축. 공개 페이지에도 출처를 표기했습니다.
