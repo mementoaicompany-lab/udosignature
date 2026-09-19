@@ -1,0 +1,38 @@
+name: Initialize independent website
+on:
+  push:
+    paths: ['.github/workflows/initialize.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  initialize:
+    if: github.repository == 'mementoaicompany-lab/udosignature'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Expand verified source once
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, zipfile
+          root = Path.cwd()
+          archive = root / 'udosignature-source.zip'
+          assert not (root / 'site.config.json').exists(), 'Already initialized'
+          assert hashlib.sha256(archive.read_bytes()).hexdigest() == '41c08d3b720f7c10743673c4ce08e5e43baf7f3446c460530342a8fdad486813'
+          with zipfile.ZipFile(archive) as z:
+              for name in z.namelist():
+                  p = Path(name)
+                  assert not p.is_absolute() and '..' not in p.parts and '.git' not in p.parts and '.github' not in p.parts
+              z.extractall(root)
+          archive.unlink()
+          PY
+          chmod +x scripts/publish.sh
+          python3 build.py
+          python3 scripts/check.py
+          node --check assets/site.js
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets docs src scripts .gitignore README.md TESTING.md build.py site.config.json udosignature-source.zip
+          git commit -m 'Initialize verified Coconara SEO website source and Pages output'
+          git push origin HEAD:main
