@@ -12,7 +12,7 @@
 | 기존 Sites 프로젝트(읽기 참고만) | `/Users/kimjiwon/Documents/Codex/2026-09-07/new-chat/work/coconara/site/` | `https://coconara-udo-guide.mementoaicompany.chatgpt.site/` |
 | 기존 완료 기록(읽기 참고만) | `/Users/kimjiwon/Documents/Codex/2026-09-07/new-chat/work/coconara-v27/` | 신규 배포에 사용하지 않음 |
 
-새 폴더에서 새 Git 이력을 만들었습니다. 기존 `.git`, `.openai/hosting.json`, CNAME, 배포 자격증명, Firebase SDK·인증정보는 복사하지 않았습니다. 기존 공개 운항 안내의 `ferryStatus.json` 주소만 읽기 전용으로 참조합니다. 새 사이트 배포 설정은 **udosignature → Settings → Pages → main /docs**입니다. 기존 저장소·Sites 배포는 이 설정과 연결되지 않습니다. 새 전용 도메인은 이 저장소에만 연결합니다.
+새 폴더에서 새 Git 이력을 만들었습니다. 기존 `.git`, `.openai/hosting.json`, CNAME, 배포 자격증명, Firebase SDK·인증정보는 복사하지 않았습니다. 새 SEO 페이지에서는 기존 공개 운항 안내의 `ferryStatus.json`을 읽기 전용으로 참조합니다. `/customer-guide/`는 별도로 원본 안내 화면을 삽입하며, 소유자가 허용한 기존 방문 집계 예외는 아래에 기록했습니다. 새 사이트 배포 설정은 **udosignature → Settings → Pages → main /docs**입니다. 기존 저장소·Sites 배포는 이 설정과 연결되지 않습니다. 새 전용 도메인은 이 저장소에만 연결합니다.
 
 `github.com/mementoaicompany-lab/udosignature`는 코드 저장소, `https://udosignature.com/`은 공개 홈페이지입니다. 이전 공개 주소 `https://mementoaicompany-lab.github.io/udosignature/`는 GitHub Pages의 전용 도메인 리디렉션 대상입니다. 도메인은 카페24에서 관리하고, 홈페이지 호스팅·배포는 GitHub Pages를 유지합니다. 도메인 만료일은 구매 화면 기준 2027-09-20입니다.
 
@@ -43,7 +43,7 @@ node scripts/check-ferry.cjs
 
 ## SEO와 콘텐츠
 
-검색 대상 한국어 정적 HTML 7페이지(전체 HTML 9개)는 각각 고유 title, description, H1, canonical, Open Graph/X 메타, 내부 링크를 갖습니다. `Organization`, `WebSite`, `WebPage`, 상세 페이지 `BreadcrumbList` JSON-LD를 사용합니다. 확인되지 않은 가격·후기·평점·순위·인증·영업시간·상세 주소를 구조화 데이터에 넣지 않았습니다. 사업장 전체 정보가 없으므로 LocalBusiness의 불완전한 상세 주소를 만들지 않고 Organization을 사용합니다.
+검색 대상 한국어 정적 HTML 7페이지(전체 HTML 10개)는 각각 고유 title, description, H1, canonical, Open Graph/X 메타, 내부 링크를 갖습니다. `Organization`, `WebSite`, `WebPage`, 상세 페이지 `BreadcrumbList` JSON-LD를 사용합니다. 확인되지 않은 가격·후기·평점·순위·인증·영업시간·상세 주소를 구조화 데이터에 넣지 않았습니다. Organization에 확인된 사업장 주소·대표 문의 번호·사업자등록번호를 반영했습니다. 종료시간은 월별 마지막 배에 따라 달라지므로 고정된 매일 18시 마감으로 구조화하지 않습니다.
 
 한국어 SEO 우선으로 신규 콘텐츠는 한국어입니다. 언어 버튼은 기존 6개 언어 고객 안내의 연결 페이지로 이동합니다. 신규 페이지의 번역을 제공한다고 표시하거나 잘못된 hreflang을 만들지 않습니다. 추후 실제 번역 페이지를 추가할 때 언어별 URL과 자기참조·상호참조 hreflang을 함께 생성하세요.
 
@@ -65,7 +65,7 @@ HTTPS 인증서 발급 이후 GitHub Pages의 Enforce HTTPS를 활성화합니�
 
 `assets/site.js`는 `udosignature:conversion` CustomEvent와 `window.udosignatureEvents`(최대 100개, 메모리만)를 제공합니다. 이벤트: booking_click, vehicle_detail_click, map_click, guide_click, inquiry_click, language_guide_click, content_click. 각 이벤트에 site, page, vehicle, placement를 기록합니다.
 
-현재 외부 분석 서비스는 연결하지 않았습니다. 전환 이벤트의 네트워크 전송, 쿠키, localStorage, 사용자 식별값, 기존 방문자 카운터 쓰기가 없습니다. 배시간 페이지와 메인만 기존 공개 운항 기록을 GET으로 읽으며, Firebase SDK·관리자 인증·쓰기 기능은 없습니다. URL 쿼리·전화번호 등 개인정보도 이벤트에 포함하지 않습니다. 분석 도입 시 udosignature 전용 속성·이벤트를 연결하세요. **스마트스토어 이동 클릭은 예약 결제 완료가 아닙니다.** 외부 구매완료 전환 추적은 별도 연동 가능 여부 확인이 필요합니다.
+새 사이트 자체에는 외부 분석 서비스를 연결하지 않았습니다. 자체 전환 이벤트는 네트워크 전송, 쿠키, localStorage, 사용자 식별값, 기존 방문자 카운터 쓰기가 없습니다. 단, `/customer-guide/`에 삽입한 원본 화면은 소유자의 별도 승인에 따라 기존 카운터를 사용합니다. 배시간 페이지와 메인만 기존 공개 운항 기록을 GET으로 읽으며, Firebase SDK·관리자 인증·쓰기 기능은 없습니다. URL 쿼리·전화번호 등 개인정보도 이벤트에 포함하지 않습니다. 분석 도입 시 udosignature 전용 속성·이벤트를 연결하세요. **스마트스토어 이동 클릭은 예약 결제 완료가 아닙니다.** 외부 구매완료 전환 추적은 별도 연동 가능 여부 확인이 필요합니다.
 
 ## 확인 자료와 입력할 정보
 
@@ -75,14 +75,13 @@ HTTPS 인증서 발급 이후 GitHub Pages의 Enforce HTTPS를 활성화합니�
 
 소유자가 확인할 항목:
 
-- 대표자, 사업자등록번호, 사업장 전체 주소, 일반 문의 전화번호.
-- 통신판매업 신고번호(해당 여부 포함), 운영시간.
+- 아래 사업자 정보는 2026-09-20 운영자와 첨부 증명서로 확인해 반영했습니다. 변경 시 `site.config.json.business`를 수정하세요.
 - 파미의 85kg·180cm 기준 간 적용 관계와 운전자/동승자 적용 범위.
 - 현재 차량의 정확한 외형·사양. 현재 이미지는 실물 증빙이 아닌 캐릭터 일러스트입니다.
 - 현재 재고·추가 비용·예약 상품의 세부 조건, 외국 면허 인정 서류. 요금과 할인 원칙은 2026-09-20 운영자 확인 내용을 반영했습니다.
 - 공식 블로그·유튜브 채널 URL. 기존 영상 임베드를 공식 채널로 추정하지 않음.
 
-사이트 footer는 미확인 사업자 항목을 ‘확인 중’으로 표시합니다. 광고 심사 전에 완성해야 합니다. 기존 0507 번호는 ‘긴급전화’로만 확인되어 일반 문의 전화로 단정하지 않았습니다.
+사이트 footer에 김경택(공동사업자 김지원), 사업자등록번호 101-34-52349, 제주특별자치도 제주시 우도면 우목길 105, 대표 문의 0507-1373-2359·추가 연락처 010-4428-2349, 통신판매업 신고번호 제2020-제주우도-0011호를 반영했습니다. 매장 운영은 09:00~18:00·연중무휴이며 종료시간은 월별 마지막 배에 따라 변동합니다. 차량 반납은 마지막 배 1시간 전까지로 구분합니다. 증명서 원본 이미지와 생년월일은 저장소·공개 홈페이지에 게시하지 않았습니다.
 
 ## 사진 출처
 
@@ -128,3 +127,12 @@ python3 scripts/indexnow.py --submit
 이전 GitHub 프로젝트 경로는 서치어드바이저에서 호스트 단위 등록 제한이 있었습니다. 전용 도메인 연결 후에는 `https://udosignature.com`으로 소유확인을 진행합니다. 기존 GitHub 호스트 루트나 다른 저장소는 수정하지 않습니다.
 
 근거: [네이버 IndexNow 키](https://searchadvisor.naver.com/guide/indexnow-api-key), [페이지 갱신 알림](https://searchadvisor.naver.com/guide/indexnow-request), [모바일 사용성](https://searchadvisor.naver.com/guide/markup-mobile).
+
+
+## 예약 고객 안내 카테고리 — 2026-09-20
+
+`https://udosignature.com/customer-guide/`에서 기존 `https://mementoaicompany-lab.github.io/coconara/` 화면을 iframe으로 표시합니다. 새 사이트 메뉴·상단 고객 안내·footer·다국어 연결은 이 경로를 사용합니다. 주소창은 udosignature.com을 유지하며 원본 화면의 파일·배포·관리 기능은 기존 저장소에 남습니다. 원본을 업데이트하면 삽입 화면도 해당 원본을 불러옵니다. 외부 연결을 새 창으로 열면 해당 서비스 주소로 이동합니다.
+
+소유자는 2026-09-20 **‘기존 화면을 그대로 삽입하고 기존 방문 집계 허용’**을 명시했습니다. 이전의 카운터 분리 원칙에서 이 삽입 화면만 예외입니다. 삽입 화면은 원본의 방문 카운터·Firebase 동작을 사용하므로 완전히 독립된 방문 집계가 아닙니다. 새 SEO 페이지의 자체 이벤트는 계속 udosignature에만 기록하고, Firebase SDK·인증정보·관리자 소스를 신규 프로젝트로 복사하지 않습니다. 기존 저장소나 배포 설정은 수정하지 않습니다.
+
+고객 안내 연결 페이지는 `noindex, follow`이며 사이트맵에서 제외합니다. 원본 전체 HTML을 복제하거나 고객 안내 내용을 중복 검색 페이지로 만들지 않습니다. 브라우저의 삽입 제한이나 지도 기능 문제에 대비해 원본 새 창 열기 링크를 제공합니다. 이 작업은 원본의 도메인을 변경하거나 원본을 이전한 것이 아닙니다.

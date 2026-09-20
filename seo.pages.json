@@ -70,5 +70,13 @@
     "file": "udo.html",
     "updatedAt": "2026-09-20",
     "searchIntent": "우도·제주도 우도·우도 여행 준비"
+  },
+  "customer-guide/": {
+    "title": "코코나라 예약 고객 안내 | 배시간·지도·이용방법",
+    "description": "코코나라 예약 고객을 위한 기존 안내 화면입니다. 배시간, 매장 위치, 우도 지도, 차량 이용방법과 다국어 안내를 한곳에서 확인하세요.",
+    "label": "예약 고객 안내",
+    "file": "customer-guide.html",
+    "noindex": true,
+    "updatedAt": "2026-09-20"
   }
 }

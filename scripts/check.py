@@ -20,10 +20,13 @@ for path,page in pages.items():
  title=re.search(r'<title>(.*?)</title>',s).group(1);titles.append(title)
  desc=[a.get('content') for t,a in page.tags if t=='meta' and a.get('name')=='description'];check(len(desc)==1,'description');descriptions+=desc
  robots=[a.get('content','') for t,a in page.tags if t=='meta' and a.get('name')=='robots'];check(len(robots)==1,'robots meta')
- check(('noindex' in robots[0])==(route in ['guide/','404.html']),'index policy')
+ check(('noindex' in robots[0])==(route in ['guide/','customer-guide/','404.html']),'index policy')
  canonical=[a.get('href') for t,a in page.tags if t=='link' and a.get('rel')=='canonical'];check(canonical==[base+route],'canonical mismatch')
  for payload in re.findall(r'<script type="application/ld\+json">(.*?)</script>',s):check(json.loads(payload).get('@context')=='https://schema.org','schema')
  for t,a in page.tags:
+  if t=='iframe':
+   check(route=='customer-guide/' and a.get('src')==C['guideUrl'],'approved original guest guide only')
+   check(bool(a.get('title')) and a.get('loading')=='lazy','accessible lazy guide embed')
   if t=='img':check(bool(a.get('alt')) and a.get('width') and a.get('height'),'image alt/dimensions')
   if t=='a' and a.get('target')=='_blank':check('noopener' in a.get('rel',''),'new-tab security')
   refs=[a[k] for k in ('src','href') if k in a]

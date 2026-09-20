@@ -9,12 +9,20 @@
   "mapUrl": "https://map.naver.com/p/search/%EC%9A%B0%EB%8F%84%20%EC%BD%94%EC%BD%94%EB%82%98%EB%9D%BC",
   "business": {
     "name": "코코나라",
-    "representative": null,
-    "registrationNumber": null,
-    "address": null,
-    "phone": null,
-    "mailOrderNumber": null,
-    "openingHours": null
+    "representative": "김경택 (공동사업자 김지원)",
+    "registrationNumber": "101-34-52349",
+    "address": "제주특별자치도 제주시 우도면 우목길 105",
+    "phone": "0507-1373-2359",
+    "mailOrderNumber": "제2020-제주우도-0011호",
+    "openingHours": "09:00~18:00 · 연중무휴 (종료시간은 월별 마지막 배에 따라 변동)",
+    "secondaryPhone": "010-4428-2349",
+    "addressStructured": {
+      "@type": "PostalAddress",
+      "streetAddress": "우도면 우목길 105",
+      "addressLocality": "제주시",
+      "addressRegion": "제주특별자치도",
+      "addressCountry": "KR"
+    }
   },
   "sameAs": [
     "https://smartstore.naver.com/udorent"
