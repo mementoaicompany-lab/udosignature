@@ -21,3 +21,7 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',Arial,sans-serif}html{scr
 @media(max-width:760px){.travel-map-layout{grid-template-columns:1fr;gap:25px}.map-panel{padding:12px}.spot-cards article>img{height:230px}.spot-tabs{gap:7px}.spot-tabs a{font-size:13px;padding:7px 9px}.spot-cards article>div{padding:21px}}
 
 [hidden]{display:none!important}.motion-toggle{min-height:44px}.motion-toggle:disabled{opacity:1;cursor:default}.spot-tabs a{min-height:44px}.category-nav a{min-height:44px}
+
+/* Search landing information: keep the established pink layout. */
+.rental-prices{margin-top:38px;padding-top:32px;border-top:1px solid var(--line)}.rental-prices .steps{margin:28px 0}.rental-prices caption{font-size:13px;color:var(--muted)}.rental-prices .actions{margin-top:25px}.rate-inline strong{font-size:21px;color:var(--pink)}.rate-inline span{font-size:13px}.rate-inline small{display:block;font-size:12px;line-height:1.6}.vehicle-card .rate-inline{min-height:82px;margin-bottom:12px}.trip-overview{margin-top:28px}.trip-overview li{margin-bottom:12px}.trip-overview a{text-decoration:underline;text-underline-offset:4px}.content-byline{font-size:13px;color:var(--muted);margin-top:25px}
+@media(max-width:760px){.rental-prices .comparison th,.rental-prices .comparison td{padding:12px 8px}.rental-prices h2{font-size:25px}.rate-inline strong{font-size:20px}}

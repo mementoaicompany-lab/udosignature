@@ -44,15 +44,17 @@ for path,page in pages.items():
   check(forbidden not in s,'legacy artifact '+forbidden)
 check(len(titles)==len(set(titles)),'duplicate titles');check(len(descriptions)==len(set(descriptions)),'duplicate descriptions')
 sm=ET.parse(D/'sitemap.xml');locs=[e.text for e in sm.findall('.//{*}loc')]
-check(locs==[base,base+'udo-electric-car/',base+'udo-scooter/',base+'udo-course/',base+'partners/',base+'udo-ferry/'],'sitemap exact routes')
+check(locs==[base,base+'udo-electric-car/',base+'udo-scooter/',base+'udo-course/',base+'partners/',base+'udo-ferry/',base+'udo/'],'sitemap exact routes')
 for name in ['coco.webp','fami.webp','open.webp']:
  check(not (D/'assets'/name).exists(),'obsolete vehicle photo: '+name)
  check(not (ROOT/'assets'/name).exists(),'obsolete source vehicle photo: '+name)
+key=C.get('indexNowKey','')
+check(bool(key) and (D/(key+'.txt')).read_text()==key,'IndexNow scoped proof')
 metadata=json.loads((ROOT/'seo.pages.json').read_text())
 for route,p in metadata.items():
  from datetime import date
  check(date.fromisoformat(p['updatedAt'])<=date.today(),'future content date')
-check(len(sm.findall('.//{*}lastmod'))==6,'sitemap modification dates')
+check(len(sm.findall('.//{*}lastmod'))==7,'sitemap modification dates')
 check(not (ROOT/'.openai').exists(),'Sites deployment config copied');check(not (D/'CNAME').exists(),'custom domain unexpectedly set')
 check((ROOT/'.git').is_dir(),'missing independent Git repository')
 ferry=(ROOT/'assets/ferry.js').read_text()

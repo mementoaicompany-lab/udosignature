@@ -26,5 +26,32 @@
     "provider": null,
     "measurementId": null
   },
-  "ferrySource": "https://coconara-52bc4-default-rtdb.firebaseio.com/ferryStatus.json"
+  "ferrySource": "https://coconara-52bc4-default-rtdb.firebaseio.com/ferryStatus.json",
+  "pricing": {
+    "checkedAt": "2026-09-20",
+    "source": "운영자 직접 확인",
+    "rentalPeriod": "이용 당일 마지막 배 출항 1시간 전까지 시간 제한 없이 이용",
+    "discountTerms": "파미 한정 수량 조기예약 할인. 해당 할인 옵션이 남아 있는 경우에만 적용됩니다.",
+    "vehicles": {
+      "coco": {
+        "name": "코코",
+        "seats": 1,
+        "regular": 30000,
+        "discount": null
+      },
+      "fami": {
+        "name": "파미",
+        "seats": 2,
+        "regular": 40000,
+        "discount": 30000
+      },
+      "open": {
+        "name": "오픈카",
+        "seats": 2,
+        "regular": 40000,
+        "discount": null
+      }
+    }
+  },
+  "indexNowKey": "b498c7ffba094293a6d60e2269a034dd"
 }
