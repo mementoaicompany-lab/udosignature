@@ -1,42 +1,32 @@
-name: Publish verified Naver SEO update
+name: Verify independent website
 on:
   push:
-    paths: ['.github/workflows/update-illustrations.yml']
+    paths:
+      - '.github/workflows/update-illustrations.yml'
+      - 'src/**'
+      - 'assets/**'
+      - 'docs/**'
+      - 'scripts/**'
+      - 'build.py'
+      - 'map_builder.py'
+      - 'content/**'
+      - 'site.config.json'
+      - 'seo.pages.json'
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 jobs:
-  update:
+  verify:
     if: github.repository == 'mementoaicompany-lab/udosignature'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify archive and apply reviewed source
+      - name: Verify static SEO, links and committed Pages output
         run: |
-          python3 - <<'PYCODE'
-          import hashlib, pathlib, subprocess, zipfile
-          root=pathlib.Path('.')
-          source=root/'udosignature-seo-update.zip'
-          assert subprocess.check_output(['git','hash-object','build.py'],text=True).strip() == '3968e9258bb964174b5b5e5d2ce2c64132934a03'
-          assert hashlib.sha256(source.read_bytes()).hexdigest() == '736248e1e6ebcba9bed86b2d7073704859bc4323c459f70907d22f780ff19a3f'
-          allowed={'build.py','map_builder.py','site.config.json','seo.pages.json','README.md','SEO.md','TESTING.md','.gitignore'}
-          with zipfile.ZipFile(source) as z:
-              for entry in z.infolist():
-                  p=pathlib.PurePosixPath(entry.filename)
-                  assert not p.is_absolute() and '..' not in p.parts
-                  assert p.parts[0] in {'assets','src','scripts','content'} or str(p) in allowed
-                  assert not any(x in p.parts for x in ['.git','.openai','.github','CNAME'])
-                  z.extract(entry,root)
-          source.unlink()
-          PYCODE
           python3 build.py
           python3 scripts/check.py
           node --check assets/site.js
           node --check assets/ferry.js
           node --check assets/travel-map.js
           node scripts/check-ferry.cjs
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add assets src scripts content docs build.py map_builder.py site.config.json seo.pages.json README.md SEO.md TESTING.md .gitignore udosignature-seo-update.zip
-          git commit -m "Publish Naver search content, verified rental prices and IndexNow"
-          git push origin HEAD:main
+          git diff --exit-code -- docs
