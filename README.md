@@ -147,7 +147,7 @@ python3 scripts/indexnow.py --submit
 | https://udosignature.com/ | mementoaicompany-lab/udosignature | main /docs |
 | https://guide.udosignature.com/ | mementoaicompany-lab/coconara | main / (root) |
 
-스마트스토어 상세페이지의 고객 안내 링크는 https://guide.udosignature.com/ 을 사용합니다. 기존 https://mementoaicompany-lab.github.io/coconara/ 주소도 GitHub Pages의 도메인 리디렉션으로 연결됩니다. 새 SEO 사이트의 디자인·콘텐츠·배포 대상은 바뀌지 않습니다. /customer-guide/의 원본 링크는 이 리디렉션을 따라갑니다.
+스마트스토어 상세페이지의 고객 안내 링크는 https://guide.udosignature.com/ 을 사용합니다. 기존 https://mementoaicompany-lab.github.io/coconara/ 주소도 GitHub Pages의 도메인 리디렉션으로 연결됩니다. 새 SEO 사이트의 디자인·콘텐츠·배포 대상은 바뀌지 않습니다. /customer-guide/의 iframe과 원본 링크는 새 HTTPS 주소 https://guide.udosignature.com/ 을 직접 사용해 이전 리디렉션 캐시의 영향을 피합니다.
 
 카페24의 명시적 guide CNAME은 mementoaicompany-lab.github.io이며, 기존 coconara 저장소 루트의 CNAME은 guide.udosignature.com입니다. 원본 도메인 설정 커밋 ff80b99692fa577fcf96c92269b3b5a9d118a5ab는 CNAME만 추가했습니다. udosignature 저장소의 docs/CNAME은 계속 udosignature.com입니다.
 
