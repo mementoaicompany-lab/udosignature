@@ -1,32 +1,33 @@
-name: Verify independent website
+name: Keep the published site available while DNS is pending
 on:
   push:
-    paths:
-      - '.github/workflows/update-illustrations.yml'
-      - 'src/**'
-      - 'assets/**'
-      - 'docs/**'
-      - 'scripts/**'
-      - 'build.py'
-      - 'map_builder.py'
-      - 'content/**'
-      - 'site.config.json'
-      - 'seo.pages.json'
-  workflow_dispatch:
+    paths: ['.github/workflows/update-illustrations.yml']
 permissions:
-  contents: read
+  contents: write
 jobs:
-  verify:
+  restore:
     if: github.repository == 'mementoaicompany-lab/udosignature'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify static SEO, links and committed Pages output
+        with:
+          fetch-depth: 0
+      - name: Restore verified project URL until provider DNS is ready
         run: |
+          python3 -c 'import json; assert json.load(open("site.config.json"))["baseUrl"] == "https://udosignature.com/"'
+          git restore --source=91fe09deb632914440d5c273eac81eefe153604e -- README.md SEO.md build.py content/keyword-map.csv docs scripts site.config.json
+          python3 - <<'PYCODE'
+          from pathlib import Path
+          p=Path('README.md')
+          s=p.read_text().replace('구매 도메인 `.com`/`.kr`은 미정입니다.', '운영자가 2026-09-20 `udosignature.com`을 구매했습니다(만료일 2027-09-20). 카페24 DNS 연결 제한이 해결되기 전까지 아래 GitHub Pages 주소로 운영합니다.')
+          s+='\n## 도메인 연결 보류 상태 — 2026-09-20\n\n전용 도메인용 코드와 모바일·PC 검수는 완료했으나 카페24가 루트 A 레코드 추가(code 6910)와 쇼핑몰 연결 해제(code 6922)를 거부했습니다. guide.udosignature.com 쇼핑몰 연결 항목을 해제해 목록에서 사라진 후에도 서브도메인부터 삭제하라는 응답이 남아 있습니다. 호스팅센터 로그인 후 추가 확인이 필요합니다. 접속 장애를 방지하기 위해 GitHub Pages의 Custom domain과 공개 코드를 기존 프로젝트 주소로 복구했습니다. 새 도메인 전환 준비본은 로컬 custom-domain 브랜치에 보관합니다. 기존 coconara 저장소와 고객 안내 홈페이지는 변경하지 않았습니다.\n'
+          p.write_text(s)
+          PYCODE
           python3 build.py
           python3 scripts/check.py
-          node --check assets/site.js
-          node --check assets/ferry.js
-          node --check assets/travel-map.js
           node scripts/check-ferry.cjs
-          git diff --exit-code -- docs
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add README.md SEO.md build.py content/keyword-map.csv docs scripts site.config.json
+          git commit -m "Keep GitHub Pages available pending Cafe24 DNS resolution"
+          git push origin HEAD:main
