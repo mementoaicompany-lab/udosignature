@@ -19,7 +19,7 @@
   "sameAs": [
     "https://smartstore.naver.com/udorent"
   ],
-  "naverVerification": null,
+  "naverVerification": "7499d4b2dc9ca2577cfb715c4b6ffe49e6ebc621",
   "contentCheckedAt": "2026-09-20",
   "analytics": {
     "namespace": "udosignature",

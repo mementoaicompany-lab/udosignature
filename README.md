@@ -57,6 +57,8 @@ node scripts/check-ferry.cjs
 
 GitHub Pages의 Custom domain은 `udosignature.com`, 배포 소스는 `main /docs`입니다. GitHub Pages에서 안내하는 루트 A 레코드는 `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`을 사용합니다. `www`는 `mementoaicompany-lab.github.io` CNAME으로 연결하고, GitHub Pages에서 기본 주소로 리디렉션합니다. 2026-09-20 카페24 호스팅센터 DNS는 루트 A 추가를 1개로 제한하므로 실제 루트 A는 185.199.111.153 하나로 연결했습니다. 카페24 쇼핑몰의 기존 A 주소 3개는 제거했습니다. www CNAME은 mementoaicompany-lab.github.io로 저장했습니다. `guide.udosignature.com`의 사용하지 않는 카페24 쇼핑몰 연결은 해제했습니다. 기존 고객 안내 링크는 `https://mementoaicompany-lab.github.io/coconara/`를 유지합니다.
 
+GitHub 계정의 도메인 소유확인은 DNS TXT로 완료했습니다. _github-pages-challenge-mementoaicompany-lab TXT 레코드를 유지하세요. 네이버 소유확인 메타태그는 site.config.json에 별도로 저장합니다.
+
 HTTPS 인증서 발급 이후 GitHub Pages의 Enforce HTTPS를 활성화합니다. [GitHub 도메인 설정 안내](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
 
 ## 분석과 전환의 분리
