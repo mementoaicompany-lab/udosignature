@@ -136,3 +136,19 @@ python3 scripts/indexnow.py --submit
 소유자는 2026-09-20 **‘기존 화면을 그대로 삽입하고 기존 방문 집계 허용’**을 명시했습니다. 이전의 카운터 분리 원칙에서 이 삽입 화면만 예외입니다. 삽입 화면은 원본의 방문 카운터·Firebase 동작을 사용하므로 완전히 독립된 방문 집계가 아닙니다. 새 SEO 페이지의 자체 이벤트는 계속 udosignature에만 기록하고, Firebase SDK·인증정보·관리자 소스를 신규 프로젝트로 복사하지 않습니다. 기존 저장소나 배포 설정은 수정하지 않습니다.
 
 고객 안내 연결 페이지는 `noindex, follow`이며 사이트맵에서 제외합니다. 원본 전체 HTML을 복제하거나 고객 안내 내용을 중복 검색 페이지로 만들지 않습니다. 브라우저의 삽입 제한이나 지도 기능 문제에 대비해 원본 새 창 열기 링크를 제공합니다. 이 작업은 원본의 도메인을 변경하거나 원본을 이전한 것이 아닙니다.
+
+
+## 고객 안내 전용 도메인 추가 — 2026-09-20 후속 요청
+
+사용자가 기존 GitHub 고객 안내를 udosignature 도메인으로도 직접 열도록 요청했습니다. 위의 기존 배포 설정 유지 원칙에서 이 도메인 연결만 예외로 승인된 변경입니다. 기존 화면·HTML·자산은 그대로 유지합니다.
+
+| 공개 주소 | 수정·배포 저장소 | Pages 소스 |
+|---|---|---|
+| https://udosignature.com/ | mementoaicompany-lab/udosignature | main /docs |
+| https://guide.udosignature.com/ | mementoaicompany-lab/coconara | main / (root) |
+
+스마트스토어 상세페이지의 고객 안내 링크는 https://guide.udosignature.com/ 을 사용합니다. 기존 https://mementoaicompany-lab.github.io/coconara/ 주소도 GitHub Pages의 도메인 리디렉션으로 연결됩니다. 새 SEO 사이트의 디자인·콘텐츠·배포 대상은 바뀌지 않습니다. /customer-guide/의 원본 링크는 이 리디렉션을 따라갑니다.
+
+카페24의 명시적 guide CNAME은 mementoaicompany-lab.github.io이며, 기존 coconara 저장소 루트의 CNAME은 guide.udosignature.com입니다. 원본 도메인 설정 커밋 ff80b99692fa577fcf96c92269b3b5a9d118a5ab는 CNAME만 추가했습니다. udosignature 저장소의 docs/CNAME은 계속 udosignature.com입니다.
+
+각 홈페이지를 수정할 때 해당 저장소만 업데이트하고, 기존 CNAME 파일을 보존하세요. 과거 로컬 coconara 참고 폴더에는 새 CNAME이 없으므로 예전 폴더 전체를 덮어 올리지 말고 원격 main의 최신본을 먼저 받으세요. 두 사이트의 Git 이력·배포 소스는 계속 분리되며, 기존 Sites 배포는 변경하지 않습니다.
