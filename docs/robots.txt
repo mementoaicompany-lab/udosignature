@@ -1,4 +1,3 @@
-# Coconara public website — udosignature.com
 User-agent: *
 Allow: /
 Sitemap: https://udosignature.com/sitemap.xml

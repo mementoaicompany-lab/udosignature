@@ -1,0 +1,76 @@
+{
+  "": {
+    "title": "우도 시그니처 | 우도여행·코코나라·달콤아재",
+    "description": "우도에서 만나 오래 기억되는 하루. 우도 시그니처에서 여행 지도와 코스, 코코나라 전기차·스쿠터 예약, 달콤아재 수제 아이스크림을 만나보세요.",
+    "label": "홈",
+    "file": "home.html"
+  },
+  "about/": {
+    "title": "우도 시그니처 이야기 | 우도의 브랜드가 만드는 하루",
+    "description": "우도 시그니처는 코코나라, 달콤아재와 우도 여행의 경험을 연결합니다. 각자의 색깔을 가진 로컬 브랜드가 함께 만드는 우도의 하루를 소개합니다.",
+    "label": "브랜드 이야기",
+    "file": "about.html"
+  },
+  "privacy/": {
+    "title": "개인정보 안내 | 우도 시그니처",
+    "description": "이 홈페이지의 외부 링크, 위치 기능, 개인정보 입력과 방문 분석에 관한 안내입니다.",
+    "label": "개인정보 안내",
+    "file": "privacy.html",
+    "noindex": true
+  },
+  "404.html": {
+    "title": "페이지를 찾을 수 없습니다 | portal",
+    "description": "요청한 페이지가 없습니다. 홈페이지에서 원하는 안내를 다시 선택해 주세요.",
+    "label": "페이지 없음",
+    "file": "404.html.html",
+    "noindex": true
+  },
+  "udo/": {
+    "title": "안내 페이지의 새 주소입니다 · udo/",
+    "description": "브랜드별로 안내 페이지가 이동했습니다. 새 주소에서 계속 확인해 주세요.",
+    "redirect": "https://udo.udosignature.com/",
+    "noindex": true
+  },
+  "udo-course/": {
+    "title": "안내 페이지의 새 주소입니다 · udo-course/",
+    "description": "브랜드별로 안내 페이지가 이동했습니다. 새 주소에서 계속 확인해 주세요.",
+    "redirect": "https://udo.udosignature.com/",
+    "noindex": true
+  },
+  "udo-ferry/": {
+    "title": "안내 페이지의 새 주소입니다 · udo-ferry/",
+    "description": "브랜드별로 안내 페이지가 이동했습니다. 새 주소에서 계속 확인해 주세요.",
+    "redirect": "https://udo.udosignature.com/ferry/",
+    "noindex": true
+  },
+  "udo-electric-car/": {
+    "title": "안내 페이지의 새 주소입니다 · udo-electric-car/",
+    "description": "브랜드별로 안내 페이지가 이동했습니다. 새 주소에서 계속 확인해 주세요.",
+    "redirect": "https://coconara.udosignature.com/udo-electric-car/",
+    "noindex": true
+  },
+  "udo-scooter/": {
+    "title": "안내 페이지의 새 주소입니다 · udo-scooter/",
+    "description": "브랜드별로 안내 페이지가 이동했습니다. 새 주소에서 계속 확인해 주세요.",
+    "redirect": "https://coconara.udosignature.com/udo-scooter/",
+    "noindex": true
+  },
+  "partners/": {
+    "title": "안내 페이지의 새 주소입니다 · partners/",
+    "description": "브랜드별로 안내 페이지가 이동했습니다. 새 주소에서 계속 확인해 주세요.",
+    "redirect": "https://coconara.udosignature.com/partners/",
+    "noindex": true
+  },
+  "guide/": {
+    "title": "안내 페이지의 새 주소입니다 · guide/",
+    "description": "브랜드별로 안내 페이지가 이동했습니다. 새 주소에서 계속 확인해 주세요.",
+    "redirect": "https://coconara.udosignature.com/guide/",
+    "noindex": true
+  },
+  "customer-guide/": {
+    "title": "안내 페이지의 새 주소입니다 · customer-guide/",
+    "description": "브랜드별로 안내 페이지가 이동했습니다. 새 주소에서 계속 확인해 주세요.",
+    "redirect": "https://guide.udosignature.com/",
+    "noindex": true
+  }
+}

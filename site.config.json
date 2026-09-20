@@ -1,66 +1,10 @@
 {
-  "name": "코코나라",
-  "project": "udosignature",
+  "name": "우도 시그니처",
+  "theme": "signature",
+  "domain": "udosignature.com",
   "baseUrl": "https://udosignature.com/",
-  "repository": "https://github.com/mementoaicompany-lab/udosignature",
-  "guideUrl": "https://guide.udosignature.com/",
-  "bookingUrl": "https://smartstore.naver.com/udorent/products/5482331427",
-  "inquiryUrl": "https://talk.naver.com/ct/w4zolf?frm=mnmb#nafullscreen",
-  "mapUrl": "https://map.naver.com/p/search/%EC%9A%B0%EB%8F%84%20%EC%BD%94%EC%BD%94%EB%82%98%EB%9D%BC",
-  "business": {
-    "name": "코코나라",
-    "representative": "김경택 (공동사업자 김지원)",
-    "registrationNumber": "101-34-52349",
-    "address": "제주특별자치도 제주시 우도면 우목길 105",
-    "phone": "0507-1373-2359",
-    "mailOrderNumber": "제2020-제주우도-0011호",
-    "openingHours": "09:00~18:00 · 연중무휴 (종료시간은 월별 마지막 배에 따라 변동)",
-    "secondaryPhone": "010-4428-2349",
-    "addressStructured": {
-      "@type": "PostalAddress",
-      "streetAddress": "우도면 우목길 105",
-      "addressLocality": "제주시",
-      "addressRegion": "제주특별자치도",
-      "addressCountry": "KR"
-    }
-  },
-  "sameAs": [
-    "https://smartstore.naver.com/udorent"
-  ],
+  "project": "udosignature",
+  "private": false,
   "naverVerification": "7499d4b2dc9ca2577cfb715c4b6ffe49e6ebc621",
-  "contentCheckedAt": "2026-09-20",
-  "analytics": {
-    "namespace": "udosignature",
-    "provider": null,
-    "measurementId": null
-  },
-  "ferrySource": "https://coconara-52bc4-default-rtdb.firebaseio.com/ferryStatus.json",
-  "pricing": {
-    "checkedAt": "2026-09-20",
-    "source": "운영자 직접 확인",
-    "rentalPeriod": "이용 당일 마지막 배 출항 1시간 전까지 시간 제한 없이 이용",
-    "discountTerms": "파미 한정 수량 조기예약 할인. 해당 할인 옵션이 남아 있는 경우에만 적용됩니다.",
-    "vehicles": {
-      "coco": {
-        "name": "코코",
-        "seats": 1,
-        "regular": 30000,
-        "discount": null
-      },
-      "fami": {
-        "name": "파미",
-        "seats": 2,
-        "regular": 40000,
-        "discount": 30000
-      },
-      "open": {
-        "name": "오픈카",
-        "seats": 2,
-        "regular": 40000,
-        "discount": null
-      }
-    }
-  },
-  "indexNowKey": "b498c7ffba094293a6d60e2269a034dd",
-  "customDomain": "udosignature.com"
+  "checkedAt": "2026-09-20"
 }

@@ -1,6 +1,2 @@
-.DS_Store
 __pycache__/
-.env*
-node_modules/
-.sites-runtime/
-.openai/
+.DS_Store
