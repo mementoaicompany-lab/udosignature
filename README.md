@@ -1,20 +1,20 @@
 # udosignature — 코코나라 신규 SEO 홈페이지
 
-브랜드·운영업체는 **코코나라**입니다. `udosignature`는 프로젝트와 저장소 이름이며 별도 렌탈업체나 구매 도메인이 아닙니다.
+브랜드·운영업체는 **코코나라**입니다. `udosignature`는 프로젝트와 저장소 이름이며 별도 렌탈업체가 아닙니다. 운영자가 2026-09-20 구매한 `udosignature.com`을 코코나라 신규 홈페이지의 전용 주소로 사용합니다.
 
 ## 독립된 위치와 배포 대상
 
 | 구분 | 로컬 위치 | 원격·배포 대상 |
 |---|---|---|
-| 새 프로젝트 | `/Users/kimjiwon/Documents/Codex/2026-09-20/seo-udosignature-1-https-mementoaicompany-lab/outputs/udosignature` | `https://github.com/mementoaicompany-lab/udosignature` → `https://mementoaicompany-lab.github.io/udosignature/` |
+| 새 프로젝트 | `/Users/kimjiwon/Documents/Codex/2026-09-20/seo-udosignature-1-https-mementoaicompany-lab/outputs/udosignature` | `https://github.com/mementoaicompany-lab/udosignature` → `https://udosignature.com/` |
 | 기존 소스(읽기 참고만) | `/Users/kimjiwon/Documents/Codex/2026-09-07/new-chat/work/coconara-reset/` | 기존 `mementoaicompany-lab/coconara` 저장소 |
 | 기존 빌드(읽기 참고만) | `/Users/kimjiwon/Documents/Codex/2026-09-07/new-chat/outputs/coconara-reset/` | `https://mementoaicompany-lab.github.io/coconara/` |
 | 기존 Sites 프로젝트(읽기 참고만) | `/Users/kimjiwon/Documents/Codex/2026-09-07/new-chat/work/coconara/site/` | `https://coconara-udo-guide.mementoaicompany.chatgpt.site/` |
 | 기존 완료 기록(읽기 참고만) | `/Users/kimjiwon/Documents/Codex/2026-09-07/new-chat/work/coconara-v27/` | 신규 배포에 사용하지 않음 |
 
-새 폴더에서 새 Git 이력을 만들었습니다. 기존 `.git`, `.openai/hosting.json`, CNAME, 배포 자격증명, Firebase SDK·인증정보는 복사하지 않았습니다. 기존 공개 운항 안내의 `ferryStatus.json` 주소만 읽기 전용으로 참조합니다. 새 사이트 배포 설정은 **udosignature → Settings → Pages → main /docs**입니다. 기존 저장소·Sites 배포는 이 설정과 연결되지 않습니다. GitHub Pages 도메인의 호스트만 공유합니다.
+새 폴더에서 새 Git 이력을 만들었습니다. 기존 `.git`, `.openai/hosting.json`, CNAME, 배포 자격증명, Firebase SDK·인증정보는 복사하지 않았습니다. 기존 공개 운항 안내의 `ferryStatus.json` 주소만 읽기 전용으로 참조합니다. 새 사이트 배포 설정은 **udosignature → Settings → Pages → main /docs**입니다. 기존 저장소·Sites 배포는 이 설정과 연결되지 않습니다. 새 전용 도메인은 이 저장소에만 연결합니다.
 
-운영자가 2026-09-20 `udosignature.com`을 구매했습니다(만료일 2027-09-20). 카페24 DNS 연결 제한이 해결되기 전까지 아래 GitHub Pages 주소로 운영합니다. `github.com/.../udosignature`는 코드 저장소, `mementoaicompany-lab.github.io/udosignature/`는 공개 홈페이지입니다.
+`github.com/mementoaicompany-lab/udosignature`는 코드 저장소, `https://udosignature.com/`은 공개 홈페이지입니다. 이전 공개 주소 `https://mementoaicompany-lab.github.io/udosignature/`는 GitHub Pages의 전용 도메인 리디렉션 대상입니다. 도메인은 카페24에서 관리하고, 홈페이지 호스팅·배포는 GitHub Pages를 유지합니다. 도메인 만료일은 구매 화면 기준 2027-09-20입니다.
 
 ## 수정과 빌드
 
@@ -39,7 +39,7 @@ node scripts/check-ferry.cjs
 
 수정 후 빌드·검수하고 **이 프로젝트 폴더에서만** 커밋·푸시합니다. 배포 전 `git remote -v`가 `mementoaicompany-lab/udosignature.git`인지 확인하세요. 다른 저장소 URL을 추가하지 마세요. `scripts/publish.sh`는 원격·baseUrl이 정확히 일치할 때만 현재 커밋을 푸시합니다. 최초 게시는 로그인된 GitHub 웹 UI의 소스 압축 업로드와 저장소 내부 일회성 초기화 workflow로 진행합니다. CLI 인증은 저장하지 않았습니다. 이후 로컬 push에는 별도의 GitHub 인증이 필요합니다.
 
-도메인 변경 시 `site.config.json`의 `baseUrl`을 변경하고 빌드하면 링크·canonical·OG·사이트맵이 함께 갱신됩니다. 단, 배포 대상과 DNS/CNAME 변경은 별도 작업이며 현재 설정에는 CNAME이 없습니다.
+도메인 변경 시 `site.config.json`의 `baseUrl`을 변경하고 빌드하면 링크·canonical·OG·사이트맵이 함께 갱신됩니다. 단, 배포 대상과 DNS/CNAME 변경은 별도 작업이며 `customDomain`에서 `docs/CNAME`을 새로 생성합니다. 이전 사이트의 CNAME을 복사하지 않았습니다.
 
 ## SEO와 콘텐츠
 
@@ -47,13 +47,17 @@ node scripts/check-ferry.cjs
 
 한국어 SEO 우선으로 신규 콘텐츠는 한국어입니다. 언어 버튼은 기존 6개 언어 고객 안내의 연결 페이지로 이동합니다. 신규 페이지의 번역을 제공한다고 표시하거나 잘못된 hreflang을 만들지 않습니다. 추후 실제 번역 페이지를 추가할 때 언어별 URL과 자기참조·상호참조 hreflang을 함께 생성하세요.
 
-### GitHub 프로젝트 경로의 robots 한계
+### 전용 도메인의 검색 등록
 
-`/udosignature/robots.txt`를 생성했지만 **크롤러는 호스트 루트 `/robots.txt`만 읽습니다.** 하위경로 robots는 루트 설정을 대체하지 않습니다. 확인 당시 `https://mementoaicompany-lab.github.io/robots.txt`는 404였습니다. robots 부재는 수집 차단을 뜻하지 않습니다. 기존 호스트 루트나 다른 저장소를 변경하지 않았습니다.
+`https://udosignature.com/robots.txt`는 도메인 루트에서 제공되며 `https://udosignature.com/sitemap.xml`을 안내합니다. canonical·OG·구조화 데이터·내부 링크와 IndexNow의 기준 주소도 전용 도메인으로 통일합니다.
 
-네이버 서치어드바이저는 호스트 단위로 등록합니다. 현재 프로젝트 경로만의 소유확인이 제한되면 기존 호스트 관리 권한으로 사이트맵을 제출하거나 향후 자체 도메인에서 소유확인해야 합니다. 호스트 루트에 파일·메타태그를 넣어야 한다면 기존 사이트 변경 금지 범위와 충돌할 수 있으므로 별도 작업으로 판단하세요. `site.config.json`의 verification 값은 새 프로젝트에만 적용됩니다.
+서치어드바이저에는 `https://udosignature.com`을 등록하고 `site.config.json.naverVerification`에 발급된 메타 소유확인 값을 넣어 배포한 뒤 소유확인과 사이트맵 제출을 진행합니다. 도메인 연결 자체가 네이버 소유확인 완료를 뜻하지 않습니다.
 
-근거: [네이버 robots 안내](https://searchadvisor.naver.com/guide/seo-basic-robots), [사이트 제작 안내](https://searchadvisor.naver.com/guide/seo-basic-create), [호스트 단위 진단](https://searchadvisor.naver.com/diagnose).
+### 도메인 연결 설정
+
+GitHub Pages의 Custom domain은 `udosignature.com`, 배포 소스는 `main /docs`입니다. GitHub Pages에서 안내하는 루트 A 레코드는 `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`을 사용합니다. `www`는 `mementoaicompany-lab.github.io` CNAME으로 연결하고, GitHub Pages에서 기본 주소로 리디렉션합니다. 2026-09-20 카페24 호스팅센터 DNS는 루트 A 추가를 1개로 제한하므로 실제 루트 A는 185.199.111.153 하나로 연결했습니다. 카페24 쇼핑몰의 기존 A 주소 3개는 제거했습니다. www CNAME은 mementoaicompany-lab.github.io로 저장했습니다. `guide.udosignature.com`의 사용하지 않는 카페24 쇼핑몰 연결은 해제했습니다. 기존 고객 안내 링크는 `https://mementoaicompany-lab.github.io/coconara/`를 유지합니다.
+
+HTTPS 인증서 발급 이후 GitHub Pages의 Enforce HTTPS를 활성화합니다. [GitHub 도메인 설정 안내](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
 
 ## 분석과 전환의 분리
 
@@ -108,7 +112,7 @@ node scripts/check-ferry.cjs
 
 ### 네이버에 페이지 갱신 알리기
 
-`site.config.json.indexNowKey`는 이 프로젝트 경로의 공개 파일 소유 증명용입니다. GitHub·Firebase 계정 비밀번호나 관리자 인증키가 아닙니다. 빌드가 `docs/<key>.txt`를 생성합니다. 네이버 공식 IndexNow는 하위경로에 증명 파일을 두고 keyLocation을 지정할 수 있습니다. `/udosignature/` 하위의 indexable URL 7개만 알립니다. 기존 `/coconara/`는 대상이 아닙니다.
+`site.config.json.indexNowKey`는 이 프로젝트 경로의 공개 파일 소유 증명용입니다. GitHub·Firebase 계정 비밀번호나 관리자 인증키가 아닙니다. 빌드가 `docs/<key>.txt`를 생성합니다. 네이버 공식 IndexNow는 하위경로에 증명 파일을 두고 keyLocation을 지정할 수 있습니다. `https://udosignature.com/`의 indexable URL 7개만 알립니다. 기존 `/coconara/`는 대상이 아닙니다.
 
 ```sh
 # 전송 없이 알림 대상 확인
@@ -119,10 +123,6 @@ python3 scripts/indexnow.py --submit
 
 200은 URL 알림 성공, 202는 수신 후 키 확인 대기입니다. 모두 검색 색인 완료나 순위 보장이 아닙니다. 수정이 없는데 매일 재전송하지 마세요. 서치어드바이저의 계정 소유확인·사이트맵 제출과는 별개입니다.
 
-실제 로그인한 서치어드바이저에서 현재 프로젝트 URL 등록을 시도했으며 ‘URL을 호스트 단위로 입력해주세요’라는 제한을 확인했습니다. 기존 호스트 루트나 다른 저장소는 수정하지 않았습니다. 계정별 수집·노출 리포트를 사용하려면 자체 도메인 또는 별도 승인된 호스트 루트 소유확인이 필요합니다. 현재 주소도 검색 수집 대상이 될 수 있으며 IndexNow를 지원합니다.
+이전 GitHub 프로젝트 경로는 서치어드바이저에서 호스트 단위 등록 제한이 있었습니다. 전용 도메인 연결 후에는 `https://udosignature.com`으로 소유확인을 진행합니다. 기존 GitHub 호스트 루트나 다른 저장소는 수정하지 않습니다.
 
 근거: [네이버 IndexNow 키](https://searchadvisor.naver.com/guide/indexnow-api-key), [페이지 갱신 알림](https://searchadvisor.naver.com/guide/indexnow-request), [모바일 사용성](https://searchadvisor.naver.com/guide/markup-mobile).
-
-## 도메인 연결 보류 상태 — 2026-09-20
-
-전용 도메인용 코드와 모바일·PC 검수는 완료했으나 카페24가 루트 A 레코드 추가(code 6910)와 쇼핑몰 연결 해제(code 6922)를 거부했습니다. guide.udosignature.com 쇼핑몰 연결 항목을 해제해 목록에서 사라진 후에도 서브도메인부터 삭제하라는 응답이 남아 있습니다. 호스팅센터 로그인 후 추가 확인이 필요합니다. 접속 장애를 방지하기 위해 GitHub Pages의 Custom domain과 공개 코드를 기존 프로젝트 주소로 복구했습니다. 새 도메인 전환 준비본은 로컬 custom-domain 브랜치에 보관합니다. 기존 coconara 저장소와 고객 안내 홈페이지는 변경하지 않았습니다.
