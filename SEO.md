@@ -21,7 +21,12 @@
 | 우도 스쿠터·우도 전기스쿠터 | https://mementoaicompany-lab.github.io/udosignature/udo-scooter/ | 코코 1인승, 면허·연령·체중 기준 |
 | 우도 여행코스 | https://mementoaicompany-lab.github.io/udosignature/udo-course/ | 하우목동항 출발 동선과 반납시간 계획 |
 
-`/guide/`는 예약 고객을 기존 코코나라 안내로 연결하는 noindex 페이지입니다. 기존 홈페이지 전체를 복제하거나 새 검색 콘텐츠로 제출하지 않습니다.
+`/guide/`는 면허·안전·반납·취소 안내를 제공하고 기존 다국어 고객 안내로도 연결하는 noindex 페이지입니다. 안내 콘텐츠는 사이트맵에서 제외합니다.
+
+| 추가 검색 의도 | 도착 URL | 내용 |
+|---|---|---|
+| 코코나라 예약 혜택·협력업체 | https://mementoaicompany-lab.github.io/udosignature/partners/ | 달콤아재·파크 할인, 카페 혜택, 쿠폰 사용법 |
+| 우도 배시간·하우목동항 | https://mementoaicompany-lab.github.io/udosignature/udo-ferry/ | 월별 막배·반납 기준과 당일 확인 안내 |
 
 ## 등록 전에 필요한 항목
 
@@ -33,3 +38,9 @@
 - 전용 분석 속성 연결. 현재 이벤트는 브라우저 메모리에만 있고 수집 서버가 없습니다. `booking_click`은 외부 예약 페이지 이동이며 구매완료가 아닙니다.
 
 제목과 설명은 각 페이지의 실제 내용을 간결하게 요약하고, 키워드를 반복 나열하지 않습니다. 인덱싱이나 순위를 보장하는 작업은 아닙니다. 근거: [네이버 SEO 기본 가이드](https://searchadvisor.naver.com/guide/seo-help), [사이트 최적화 안내](https://searchadvisor.naver.com/guide/report-seo).
+
+## 탐색과 전환
+
+모든 카테고리는 실제 정적 HTML URL로 연결됩니다. 각 페이지 하단의 관련 콘텐츠, 지도 장소별 상세 링크, 모바일 고정 예약 버튼으로 다음 행동을 안내합니다. GIF 같은 주행 장면의 설명과 중요한 문구는 이미지 안에만 넣지 않고 HTML 본문에 제공합니다. 이미지 alt, width/height, 지연 로딩, CSS·JS 캐시 버전과 움직임 감소 설정을 적용했습니다.
+
+광고 문구의 방향은 정가 운영·세척과 점검·예약 고객 혜택·1인승/2인승 비교입니다. 카페 할인 수치는 자료가 충돌하므로 현재는 표기하지 않았습니다. 사업자 정보와 현재 혜택 조건을 확정한 다음 광고 소재와 도착 페이지 내용을 맞춰 등록하세요. `content_click`을 추가했으며 기존 코코나라 분석에는 연결하지 않았습니다.

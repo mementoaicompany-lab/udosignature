@@ -12,7 +12,7 @@
 | 기존 Sites 프로젝트(읽기 참고만) | `/Users/kimjiwon/Documents/Codex/2026-09-07/new-chat/work/coconara/site/` | `https://coconara-udo-guide.mementoaicompany.chatgpt.site/` |
 | 기존 완료 기록(읽기 참고만) | `/Users/kimjiwon/Documents/Codex/2026-09-07/new-chat/work/coconara-v27/` | 신규 배포에 사용하지 않음 |
 
-새 폴더에서 새 Git 이력을 만들었습니다. 기존 `.git`, `.openai/hosting.json`, CNAME, 배포 자격증명, Firebase 설정은 복사하지 않았습니다. 새 사이트 배포 설정은 **udosignature → Settings → Pages → main /docs**입니다. 기존 저장소·Sites 배포는 이 설정과 연결되지 않습니다. GitHub Pages 도메인의 호스트만 공유합니다.
+새 폴더에서 새 Git 이력을 만들었습니다. 기존 `.git`, `.openai/hosting.json`, CNAME, 배포 자격증명, Firebase SDK·인증정보는 복사하지 않았습니다. 기존 공개 운항 안내의 `ferryStatus.json` 주소만 읽기 전용으로 참조합니다. 새 사이트 배포 설정은 **udosignature → Settings → Pages → main /docs**입니다. 기존 저장소·Sites 배포는 이 설정과 연결되지 않습니다. GitHub Pages 도메인의 호스트만 공유합니다.
 
 구매 도메인 `.com`/`.kr`은 미정입니다. `github.com/.../udosignature`는 코드 저장소, `mementoaicompany-lab.github.io/udosignature/`는 공개 홈페이지입니다.
 
@@ -23,15 +23,18 @@
 ```sh
 python3 build.py
 python3 scripts/check.py
+node scripts/check-ferry.cjs
 ```
 
 - `site.config.json`: baseUrl, 예약·문의·고객 안내 링크, 사업자 정보, 검색 소유확인, 분석 설정의 단일 관리 지점.
 - `seo.pages.json`: 페이지별 검색 제목·설명·의도·실제 수정일.
 - `SEO.md`: SEO 수정 위치, 키워드별 도착 URL, 등록 전 체크 항목.
 - `src/`: 각 페이지의 독립 콘텐츠.
-- `assets/`: 스타일, 작은 메뉴·이벤트 스크립트, 캐릭터 일러스트·여행 사진.
+- `assets/`: 파스텔 핑크 스타일, 주행 애니메이션, 이벤트·운항·지도 스크립트, 캐릭터 일러스트·여행 사진·쿠폰.
 - `docs/`: GitHub Pages에 공개되는 정적 결과물. 생성 파일도 함께 커밋합니다.
-- `/guide/`: 기존 고객 안내로 연결하는 짧은 페이지. `noindex, follow`, 사이트맵 제외.
+- `/guide/`: 면허·안전·반납·취소 안내와 기존 다국어 고객 안내 연결. 중복 고객 안내의 검색 노출을 줄이도록 `noindex, follow`, 사이트맵 제외.
+- `/partners/`: 협력업체 3곳의 혜택과 쿠폰. `/udo-ferry/`: 배편·반납 시간표와 날짜를 검증하는 당일 상태 안내.
+- `content/map.json`, `map_builder.py`: 제공받은 OSM 지형·도로·장소 자료를 정적 지도와 읽을 수 있는 장소 설명으로 생성.
 - `404.html`: 사용자용 오류 안내와 정상 사이트 복귀 링크. `noindex, follow`.
 
 수정 후 빌드·검수하고 **이 프로젝트 폴더에서만** 커밋·푸시합니다. 배포 전 `git remote -v`가 `mementoaicompany-lab/udosignature.git`인지 확인하세요. 다른 저장소 URL을 추가하지 마세요. `scripts/publish.sh`는 원격·baseUrl이 정확히 일치할 때만 현재 커밋을 푸시합니다. 최초 게시는 로그인된 GitHub 웹 UI의 소스 압축 업로드와 저장소 내부 일회성 초기화 workflow로 진행합니다. CLI 인증은 저장하지 않았습니다. 이후 로컬 push에는 별도의 GitHub 인증이 필요합니다.
@@ -40,7 +43,7 @@ python3 scripts/check.py
 
 ## SEO와 콘텐츠
 
-한국어 정적 HTML 4페이지는 각각 고유 title, description, H1, canonical, Open Graph/X 메타, 내부 링크를 갖습니다. `Organization`, `WebSite`, `WebPage`, 상세 페이지 `BreadcrumbList` JSON-LD를 사용합니다. 확인되지 않은 가격·후기·평점·순위·인증·영업시간·상세 주소를 구조화 데이터에 넣지 않았습니다. 사업장 전체 정보가 없으므로 LocalBusiness의 불완전한 상세 주소를 만들지 않고 Organization을 사용합니다.
+검색 대상 한국어 정적 HTML 6페이지(전체 HTML 8개)는 각각 고유 title, description, H1, canonical, Open Graph/X 메타, 내부 링크를 갖습니다. `Organization`, `WebSite`, `WebPage`, 상세 페이지 `BreadcrumbList` JSON-LD를 사용합니다. 확인되지 않은 가격·후기·평점·순위·인증·영업시간·상세 주소를 구조화 데이터에 넣지 않았습니다. 사업장 전체 정보가 없으므로 LocalBusiness의 불완전한 상세 주소를 만들지 않고 Organization을 사용합니다.
 
 한국어 SEO 우선으로 신규 콘텐츠는 한국어입니다. 언어 버튼은 기존 6개 언어 고객 안내의 연결 페이지로 이동합니다. 신규 페이지의 번역을 제공한다고 표시하거나 잘못된 hreflang을 만들지 않습니다. 추후 실제 번역 페이지를 추가할 때 언어별 URL과 자기참조·상호참조 hreflang을 함께 생성하세요.
 
@@ -54,9 +57,9 @@ python3 scripts/check.py
 
 ## 분석과 전환의 분리
 
-`assets/site.js`는 `udosignature:conversion` CustomEvent와 `window.udosignatureEvents`(최대 100개, 메모리만)를 제공합니다. 이벤트: booking_click, vehicle_detail_click, map_click, guide_click, inquiry_click, language_guide_click. 각 이벤트에 site, page, vehicle, placement를 기록합니다.
+`assets/site.js`는 `udosignature:conversion` CustomEvent와 `window.udosignatureEvents`(최대 100개, 메모리만)를 제공합니다. 이벤트: booking_click, vehicle_detail_click, map_click, guide_click, inquiry_click, language_guide_click, content_click. 각 이벤트에 site, page, vehicle, placement를 기록합니다.
 
-현재 외부 분석 서비스는 연결하지 않았습니다. 네트워크 전송, 쿠키, localStorage, 사용자 식별값, 기존 방문자 카운터·Firebase 읽기/쓰기가 없습니다. URL 쿼리·전화번호 등 개인정보도 이벤트에 포함하지 않습니다. 분석 도입 시 udosignature 전용 속성·이벤트를 연결하세요. **스마트스토어 이동 클릭은 예약 결제 완료가 아닙니다.** 외부 구매완료 전환 추적은 별도 연동 가능 여부 확인이 필요합니다.
+현재 외부 분석 서비스는 연결하지 않았습니다. 전환 이벤트의 네트워크 전송, 쿠키, localStorage, 사용자 식별값, 기존 방문자 카운터 쓰기가 없습니다. 배시간 페이지와 메인만 기존 공개 운항 기록을 GET으로 읽으며, Firebase SDK·관리자 인증·쓰기 기능은 없습니다. URL 쿼리·전화번호 등 개인정보도 이벤트에 포함하지 않습니다. 분석 도입 시 udosignature 전용 속성·이벤트를 연결하세요. **스마트스토어 이동 클릭은 예약 결제 완료가 아닙니다.** 외부 구매완료 전환 추적은 별도 연동 가능 여부 확인이 필요합니다.
 
 ## 확인 자료와 입력할 정보
 
@@ -73,10 +76,26 @@ python3 scripts/check.py
 - 현재 가격·옵션·재고 및 예약 상품의 이용조건, 외국 면허 인정 서류.
 - 공식 블로그·유튜브 채널 URL. 기존 영상 임베드를 공식 채널로 추정하지 않음.
 
-사이트 footer는 미확인 사업자 항목을 ‘입력 필요’로 표시합니다. 광고 심사 전에 완성해야 합니다. 기존 0507 번호는 ‘긴급전화’로만 확인되어 일반 문의 전화로 단정하지 않았습니다.
+사이트 footer는 미확인 사업자 항목을 ‘확인 중’으로 표시합니다. 광고 심사 전에 완성해야 합니다. 기존 0507 번호는 ‘긴급전화’로만 확인되어 일반 문의 전화로 단정하지 않았습니다.
 
 ## 사진 출처
 
 차량 3종은 사용자 제공 `코코나라 홈페이지/index/`의 `coco-scooter.webp`, `fami-cabin.webp`, `open-canopy.webp` 캐릭터 일러스트입니다. 메인은 `깃허브 업로드 v27/coco-couple-coast.png`를 640/1280px WebP로 변환했습니다. 실제 인물 차량 사진은 현재 source와 배포 결과에서 제거했습니다. 일러스트와 실제 차량의 차이를 본문·alt에 명시하며 신형 오픈카의 실제 색상은 핑크로 안내합니다. 원본 참고 폴더는 수정하지 않았습니다.
 
 하우목동항 주변: 제주영상문화산업진흥원, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Udo,_Jeju_Province,_South_Korea_01.jpg), [공공누리 제1유형](https://www.kogl.or.kr/info/licenseType1.do). 하고수동·비양도: 제주관광공사, [Visitjeju.net](https://www.visitjeju.net/photojeju), 이전 photo-credits.json의 사용제한 없음·출처표기 조건 확인. 크기 조정·WebP 압축. 공개 페이지에도 출처를 표기했습니다.
+
+## 2026-09-20 파스텔 핑크 전면 개선
+
+카테고리는 홈·스쿠터·전기차·협력업체·우도 여행·배시간·이용안내입니다. 제공받은 캐릭터·바다·도로 이미지를 CSS로 반복 움직여 GIF 같은 주행 장면을 만들었습니다. 화면 밖에서는 멈추고, 방문자가 멈춤·재생할 수 있습니다. 기기의 움직임 줄이기 설정도 반영합니다. GIF 파일 다운로드가 필요 없는 WebP 기반 장면입니다.
+
+사용자가 제공한 [마케팅 자료](https://app.notion.com/p/2c0171d001ec81bd982bc4998465ed4a)에서 정가 운영, 아침·저녁 세척·점검, 당일 반납 마감까지 이용, 방송 소개, 협력업체 혜택을 반영했습니다. 순위·사고율·독점성 수치는 독립적인 근거가 없어 넣지 않았습니다. 훈데르트윈즈 카페는 자료의 ‘2,000원’과 기존 홈페이지의 ‘20%’가 달라 확정 수치를 게시하지 않습니다. 운영자가 현재 조건을 확인해야 합니다.
+
+기존 홈페이지의 사용자용 배편·안전·취소 안내와 쿠폰을 새 디자인으로 정리했습니다. 운영자 기능과 방문 카운터는 가져오지 않았고 기존 사이트는 수정하지 않았습니다. 새 사이트를 통해 달콤아재·파크·카페 혜택, 7개 지도 장소, 차량 비교를 계속 탐색할 수 있습니다.
+
+### 운항 정보 읽기와 데이터 신선도
+
+`site.config.json.ferrySource`는 기존 사이트에서도 공개된 단일 운항 기록입니다. `assets/ferry.js`는 GET / credentials omit / cache no-store만 사용합니다. 보이는 동안 60초 간격으로 읽고 120초가 지난 결과는 사용하지 않습니다. 한국시간 날짜·당일 시작 시각·갱신시각·상태·단축 막배를 검증합니다. 날짜가 다르거나 형식이 틀리거나 통신에 실패하면 ‘당일 운항 확인 필요’와 **월별 기준**을 표시합니다. 결항일에는 출항 카운트다운이 없고, 당일 막배가 지나면 운항 종료로 표시합니다. 마지막 배 1시간 전을 반납 기준으로 안내합니다. 항구의 실시간 승선 시스템이 아니므로 출항을 보장하지 않습니다.
+
+구현 당시 공개 기록은 2026-09-09 자료여서 오늘의 확정 운항으로 표시하지 않았습니다. 기존 운영자가 기존 관리 화면에서 올바른 당일 운항 기록을 갱신하면 새 사이트에도 읽기 방식으로 반영됩니다. 새 관리자 화면은 만들지 않았습니다. 자동 검사 `scripts/check-ferry.cjs`가 날짜 경계·결항·단축·오래된 정보·입력 오류를 검증합니다.
+
+지도는 사용자 제공 2026-09-08 OSM 자료입니다. 위치 버튼은 누를 때만 기기 권한을 요청하고, 좌표를 지도에 표시할 뿐 저장·전송하지 않습니다. 실시간 내비게이션이 아닙니다. 새로 추가한 풍경·협력업체 이미지와 쿠폰은 사용자 제공 기존 사이트 자산이며 원본은 변경하지 않았습니다.

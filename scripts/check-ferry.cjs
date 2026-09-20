@@ -1,0 +1,21 @@
+// Time-dependent behavior can affect a customer's return trip; test the pure adapter.
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
+const sandbox={window:{},document:{querySelectorAll:()=>[]}};
+vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../assets/ferry.js'),'utf8'),sandbox);
+const derive=sandbox.window.UdoFerry.derive;
+const now=Date.parse('2026-09-20T02:10:00Z'),day=Date.parse('2026-09-19T15:00:00Z');
+const normal={date:'2026-09-20',serviceDayStart:day,status:'normal',memo:'당일 안내',updatedAt:now-1000,lastDeparture:null};
+assert.equal(derive(normal,now).status,'normal');assert.equal(derive(normal,now).next,690);assert.equal(derive(normal,now).last,1080);assert.equal(derive(normal,now).returnAt,1020);
+assert.equal(derive({...normal,status:'cancel'},now).next,null);
+assert.equal(derive({...normal,status:'shortened',lastDeparture:'17:30'},now).last,1050);
+assert.equal(derive({...normal,status:'shortened',lastDeparture:'20:00'},now).status,'pending');
+assert.equal(derive({...normal,status:'shortened',lastDeparture:'25:99'},now).status,'pending');
+assert.equal(derive({...normal,date:'2026-09-19'},now).status,'pending');
+assert.equal(derive(normal,now,false).status,'pending');
+assert.equal(derive(normal,Date.parse('2026-09-20T09:00:00Z')).status,'closed');
+assert.equal(derive(normal,Date.parse('2026-09-20T15:00:00Z')).status,'pending');
+assert.equal(derive({...normal,updatedAt:now+90000},now).status,'pending');
+assert.equal(derive(null,now).status,'pending');
+assert.equal(derive(null,Date.parse('2026-12-01T00:00:00Z')).last,1020);
+assert.equal(derive(null,Date.parse('2026-07-01T00:00:00Z')).last,1110);
+console.log('PASS: 16 ferry date, status, cutoff, stale-data and invalid-record assertions');

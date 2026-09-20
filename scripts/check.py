@@ -15,7 +15,7 @@ for path,page in pages.items():
  s=path.read_text();name=str(path.relative_to(D));route='' if name=='index.html' else name.removesuffix('index.html')
  def check(cond,msg):
   if not cond:errors.append(name+': '+msg)
- check(s.count('<h1>')==1,'exactly one H1');check('{{' not in s,'unresolved template')
+ check(s.count('<h1>')==1,'exactly one H1');check(len([1 for t,a in page.tags if 'id' in a])==len(page.ids),'duplicate element IDs');check('{{' not in s,'unresolved template')
  import re
  title=re.search(r'<title>(.*?)</title>',s).group(1);titles.append(title)
  desc=[a.get('content') for t,a in page.tags if t=='meta' and a.get('name')=='description'];check(len(desc)==1,'description');descriptions+=desc
@@ -40,11 +40,11 @@ for path,page in pages.items():
    check(target.is_file(),'missing local reference: '+ref)
    if u.fragment and target in pages:check(unquote(u.fragment) in pages[target].ids,'missing anchor: '+ref)
    if t in ['img','script','link'] and target.is_file():assets.add(target)
- for forbidden in ['firebaseio.com','firebasedatabase.app','firebase-app','관리자 모드','사진 추가','맛집 추가']:
+ for forbidden in ['firebase-app','firebase-auth','firebase-database-compat','관리자 모드','사진 추가','맛집 추가']:
   check(forbidden not in s,'legacy artifact '+forbidden)
 check(len(titles)==len(set(titles)),'duplicate titles');check(len(descriptions)==len(set(descriptions)),'duplicate descriptions')
 sm=ET.parse(D/'sitemap.xml');locs=[e.text for e in sm.findall('.//{*}loc')]
-check(locs==[base,base+'udo-electric-car/',base+'udo-scooter/',base+'udo-course/'],'sitemap exact routes')
+check(locs==[base,base+'udo-electric-car/',base+'udo-scooter/',base+'udo-course/',base+'partners/',base+'udo-ferry/'],'sitemap exact routes')
 for name in ['coco.webp','fami.webp','open.webp']:
  check(not (D/'assets'/name).exists(),'obsolete vehicle photo: '+name)
  check(not (ROOT/'assets'/name).exists(),'obsolete source vehicle photo: '+name)
@@ -52,9 +52,14 @@ metadata=json.loads((ROOT/'seo.pages.json').read_text())
 for route,p in metadata.items():
  from datetime import date
  check(date.fromisoformat(p['updatedAt'])<=date.today(),'future content date')
-check(len(sm.findall('.//{*}lastmod'))==4,'sitemap modification dates')
+check(len(sm.findall('.//{*}lastmod'))==6,'sitemap modification dates')
 check(not (ROOT/'.openai').exists(),'Sites deployment config copied');check(not (D/'CNAME').exists(),'custom domain unexpectedly set')
 check((ROOT/'.git').is_dir(),'missing independent Git repository')
+ferry=(ROOT/'assets/ferry.js').read_text()
+check("method:'GET'" in ferry and "credentials:'omit'" in ferry,'ferry read-only GET')
+for p in (D/'assets').glob('*.js'):
+ for token in ['firebase.initializeApp','firebase.database','firebase.auth','.setItem(','method:\'POST\'','method:\'PUT\'','method:\'PATCH\'','method:\'DELETE\'']:
+  check(token not in p.read_text(),'forbidden write/auth code '+token)
 report={'pages':len(pages),'localReferences':links,'uniqueAssets':len(assets),'indexedPages':len(locs),'errors':errors,'totalPublicBytes':sum(p.stat().st_size for p in D.rglob('*') if p.is_file())}
 print(json.dumps(report,ensure_ascii=False,indent=2))
 if errors:raise SystemExit(1)
