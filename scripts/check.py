@@ -19,6 +19,8 @@ for path,page in pages.items():
  import re
  title=re.search(r'<title>(.*?)</title>',s).group(1);titles.append(title)
  desc=[a.get('content') for t,a in page.tags if t=='meta' and a.get('name')=='description'];check(len(desc)==1,'description');descriptions+=desc
+ robots=[a.get('content','') for t,a in page.tags if t=='meta' and a.get('name')=='robots'];check(len(robots)==1,'robots meta')
+ check(('noindex' in robots[0])==(route in ['guide/','404.html']),'index policy')
  canonical=[a.get('href') for t,a in page.tags if t=='link' and a.get('rel')=='canonical'];check(canonical==[base+route],'canonical mismatch')
  for payload in re.findall(r'<script type="application/ld\+json">(.*?)</script>',s):check(json.loads(payload).get('@context')=='https://schema.org','schema')
  for t,a in page.tags:
@@ -43,6 +45,14 @@ for path,page in pages.items():
 check(len(titles)==len(set(titles)),'duplicate titles');check(len(descriptions)==len(set(descriptions)),'duplicate descriptions')
 sm=ET.parse(D/'sitemap.xml');locs=[e.text for e in sm.findall('.//{*}loc')]
 check(locs==[base,base+'udo-electric-car/',base+'udo-scooter/',base+'udo-course/'],'sitemap exact routes')
+for name in ['coco.webp','fami.webp','open.webp']:
+ check(not (D/'assets'/name).exists(),'obsolete vehicle photo: '+name)
+ check(not (ROOT/'assets'/name).exists(),'obsolete source vehicle photo: '+name)
+metadata=json.loads((ROOT/'seo.pages.json').read_text())
+for route,p in metadata.items():
+ from datetime import date
+ check(date.fromisoformat(p['updatedAt'])<=date.today(),'future content date')
+check(len(sm.findall('.//{*}lastmod'))==4,'sitemap modification dates')
 check(not (ROOT/'.openai').exists(),'Sites deployment config copied');check(not (D/'CNAME').exists(),'custom domain unexpectedly set')
 check((ROOT/'.git').is_dir(),'missing independent Git repository')
 report={'pages':len(pages),'localReferences':links,'uniqueAssets':len(assets),'indexedPages':len(locs),'errors':errors,'totalPublicBytes':sum(p.stat().st_size for p in D.rglob('*') if p.is_file())}

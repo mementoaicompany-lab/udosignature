@@ -26,8 +26,10 @@ python3 scripts/check.py
 ```
 
 - `site.config.json`: baseUrl, 예약·문의·고객 안내 링크, 사업자 정보, 검색 소유확인, 분석 설정의 단일 관리 지점.
+- `seo.pages.json`: 페이지별 검색 제목·설명·의도·실제 수정일.
+- `SEO.md`: SEO 수정 위치, 키워드별 도착 URL, 등록 전 체크 항목.
 - `src/`: 각 페이지의 독립 콘텐츠.
-- `assets/`: 스타일, 작은 메뉴·이벤트 스크립트, 사진.
+- `assets/`: 스타일, 작은 메뉴·이벤트 스크립트, 캐릭터 일러스트·여행 사진.
 - `docs/`: GitHub Pages에 공개되는 정적 결과물. 생성 파일도 함께 커밋합니다.
 - `/guide/`: 기존 고객 안내로 연결하는 짧은 페이지. `noindex, follow`, 사이트맵 제외.
 - `404.html`: 사용자용 오류 안내와 정상 사이트 복귀 링크. `noindex, follow`.
@@ -67,7 +69,7 @@ python3 scripts/check.py
 - 대표자, 사업자등록번호, 사업장 전체 주소, 일반 문의 전화번호.
 - 통신판매업 신고번호(해당 여부 포함), 운영시간.
 - 파미의 85kg·180cm 기준 간 적용 관계와 운전자/동승자 적용 범위.
-- 현재 차량 실물·고화질 사진, 특히 핑크 신형 오픈카 사진.
+- 현재 차량의 정확한 외형·사양. 현재 이미지는 실물 증빙이 아닌 캐릭터 일러스트입니다.
 - 현재 가격·옵션·재고 및 예약 상품의 이용조건, 외국 면허 인정 서류.
 - 공식 블로그·유튜브 채널 URL. 기존 영상 임베드를 공식 채널로 추정하지 않음.
 
@@ -75,6 +77,6 @@ python3 scripts/check.py
 
 ## 사진 출처
 
-차량 3종: 사용자가 재사용을 허용한 기존 코코나라 GIF의 첫 프레임. WebP로 압축했고 CSS에서 사진 부분이 보이도록 표시합니다. 원본에 있던 이용제한은 HTML 텍스트로 별도 제공. 오픈카는 참고 사진임을 명시합니다.
+차량 3종은 사용자 제공 `코코나라 홈페이지/index/`의 `coco-scooter.webp`, `fami-cabin.webp`, `open-canopy.webp` 캐릭터 일러스트입니다. 메인은 `깃허브 업로드 v27/coco-couple-coast.png`를 640/1280px WebP로 변환했습니다. 실제 인물 차량 사진은 현재 source와 배포 결과에서 제거했습니다. 일러스트와 실제 차량의 차이를 본문·alt에 명시하며 신형 오픈카의 실제 색상은 핑크로 안내합니다. 원본 참고 폴더는 수정하지 않았습니다.
 
 하우목동항 주변: 제주영상문화산업진흥원, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Udo,_Jeju_Province,_South_Korea_01.jpg), [공공누리 제1유형](https://www.kogl.or.kr/info/licenseType1.do). 하고수동·비양도: 제주관광공사, [Visitjeju.net](https://www.visitjeju.net/photojeju), 이전 photo-credits.json의 사용제한 없음·출처표기 조건 확인. 크기 조정·WebP 압축. 공개 페이지에도 출처를 표기했습니다.
