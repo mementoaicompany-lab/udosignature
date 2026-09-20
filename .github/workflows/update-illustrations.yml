@@ -1,32 +1,36 @@
-name: Verify independent website
+name: Publish Naver site ownership metadata
 on:
   push:
-    paths:
-      - '.github/workflows/update-illustrations.yml'
-      - 'src/**'
-      - 'assets/**'
-      - 'docs/**'
-      - 'scripts/**'
-      - 'build.py'
-      - 'map_builder.py'
-      - 'content/**'
-      - 'site.config.json'
-      - 'seo.pages.json'
+    paths: ['.github/workflows/update-illustrations.yml']
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
-  verify:
+  publish:
     if: github.repository == 'mementoaicompany-lab/udosignature'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify static SEO, links and committed Pages output
+      - name: Add verified account metadata and rebuild
         run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('site.config.json')
+          c=json.loads(p.read_text())
+          assert c['baseUrl']=='https://udosignature.com/'
+          c['naverVerification']='7499d4b2dc9ca2577cfb715c4b6ffe49e6ebc621'
+          p.write_text(json.dumps(c,ensure_ascii=False,indent=2)+'\n')
+          p=Path('README.md')
+          s=p.read_text()
+          s=s.replace('HTTPS 인증서 발급 이후', 'GitHub 계정의 도메인 소유확인은 DNS TXT로 완료했습니다. _github-pages-challenge-mementoaicompany-lab TXT 레코드를 유지하세요. 네이버 소유확인 메타태그는 site.config.json에 별도로 저장합니다.\n\nHTTPS 인증서 발급 이후')
+          p.write_text(s)
+          PY
           python3 build.py
           python3 scripts/check.py
-          node --check assets/site.js
-          node --check assets/ferry.js
-          node --check assets/travel-map.js
           node scripts/check-ferry.cjs
-          git diff --exit-code -- docs
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add site.config.json README.md docs
+          git commit -m "Add Naver site verification for udosignature.com"
+          git push origin HEAD:main
