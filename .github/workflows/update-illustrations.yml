@@ -1,41 +1,27 @@
-name: Apply verified illustration update
+name: Verify independent website
 on:
   push:
-    paths: ['.github/workflows/update-illustrations.yml']
+    paths:
+      - '.github/workflows/update-illustrations.yml'
+      - 'src/**'
+      - 'assets/**'
+      - 'docs/**'
+      - 'scripts/**'
+      - 'build.py'
+      - 'site.config.json'
+      - 'seo.pages.json'
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 jobs:
-  update:
+  verify:
     if: github.repository == 'mementoaicompany-lab/udosignature'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Apply verified source archive once
+      - name: Verify static SEO, links and committed Pages output
         run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          import hashlib, zipfile, subprocess
-          root = Path.cwd()
-          archive = root / 'udosignature-update.zip'
-          assert subprocess.check_output(['git','rev-parse','HEAD:build.py']).decode().strip() == '64f380618b786c56cf09b7e33a73a4c7c005df33', 'Unexpected starting source'
-          assert hashlib.sha256(archive.read_bytes()).hexdigest() == '3936d4be5fcde5f640f162e560c4db15d829aba8e9b8d95bb9d66b192ed3af60'
-          allowed = {'assets','src','scripts','README.md','TESTING.md','SEO.md','build.py','site.config.json','seo.pages.json','.gitignore'}
-          with zipfile.ZipFile(archive) as z:
-              for name in z.namelist():
-                  p = Path(name)
-                  assert not p.is_absolute() and '..' not in p.parts and p.parts[0] in allowed
-                  assert not any(x in p.parts for x in ['.git','.github','.openai','CNAME'])
-              z.extractall(root)
-          for name in ['coco.webp','fami.webp','open.webp']:
-              (root / 'assets' / name).unlink()
-          archive.unlink()
-          PY
           python3 build.py
           python3 scripts/check.py
           node --check assets/site.js
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add assets docs src scripts README.md TESTING.md SEO.md build.py site.config.json seo.pages.json .gitignore udosignature-update.zip
-          git commit -m 'Replace vehicle photos with character illustrations and improve SEO editing'
-          git push origin HEAD:main
+          git diff --exit-code -- docs
