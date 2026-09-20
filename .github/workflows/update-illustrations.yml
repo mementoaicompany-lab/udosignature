@@ -1,18 +1,5 @@
-name: Verify independent website
-on:
-  push:
-    paths:
-      - '.github/workflows/update-illustrations.yml'
-      - 'src/**'
-      - 'assets/**'
-      - 'docs/**'
-      - 'scripts/**'
-      - 'build.py'
-      - 'map_builder.py'
-      - 'content/**'
-      - 'site.config.json'
-      - 'seo.pages.json'
-  workflow_dispatch:
+name: Verify independent brand website
+on: [push, workflow_dispatch]
 permissions:
   contents: read
 jobs:
@@ -21,12 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify static SEO, links and committed Pages output
+      - name: Build and check static site
         run: |
           python3 build.py
           python3 scripts/check.py
-          node --check assets/site.js
-          node --check assets/ferry.js
-          node --check assets/travel-map.js
-          node scripts/check-ferry.cjs
+          for script in assets/*.js; do node --check "$script"; done
+          if [ -f scripts/check-ferry.cjs ]; then node scripts/check-ferry.cjs; fi
           git diff --exit-code -- docs
