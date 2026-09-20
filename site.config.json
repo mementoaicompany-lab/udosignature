@@ -1,7 +1,7 @@
 {
   "name": "코코나라",
   "project": "udosignature",
-  "baseUrl": "https://udosignature.com/",
+  "baseUrl": "https://mementoaicompany-lab.github.io/udosignature/",
   "repository": "https://github.com/mementoaicompany-lab/udosignature",
   "guideUrl": "https://mementoaicompany-lab.github.io/coconara/",
   "bookingUrl": "https://smartstore.naver.com/udorent/products/5482331427",
@@ -53,6 +53,5 @@
       }
     }
   },
-  "indexNowKey": "b498c7ffba094293a6d60e2269a034dd",
-  "customDomain": "udosignature.com"
+  "indexNowKey": "b498c7ffba094293a6d60e2269a034dd"
 }

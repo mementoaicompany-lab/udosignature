@@ -15,7 +15,7 @@ for path,page in pages.items():
  s=path.read_text();name=str(path.relative_to(D));route='' if name=='index.html' else name.removesuffix('index.html')
  def check(cond,msg):
   if not cond:errors.append(name+': '+msg)
- check('mementoaicompany-lab.github.io/udosignature/' not in s,'obsolete canonical origin');check('\"/udosignature/' not in s,'obsolete project path');check(s.count('<h1>')==1,'exactly one H1');check(len([1 for t,a in page.tags if 'id' in a])==len(page.ids),'duplicate element IDs');check('{{' not in s,'unresolved template')
+ check(s.count('<h1>')==1,'exactly one H1');check(len([1 for t,a in page.tags if 'id' in a])==len(page.ids),'duplicate element IDs');check('{{' not in s,'unresolved template')
  import re
  title=re.search(r'<title>(.*?)</title>',s).group(1);titles.append(title)
  desc=[a.get('content') for t,a in page.tags if t=='meta' and a.get('name')=='description'];check(len(desc)==1,'description');descriptions+=desc
@@ -55,8 +55,7 @@ for route,p in metadata.items():
  from datetime import date
  check(date.fromisoformat(p['updatedAt'])<=date.today(),'future content date')
 check(len(sm.findall('.//{*}lastmod'))==7,'sitemap modification dates')
-check('Sitemap: '+base+'sitemap.xml' in (D/'robots.txt').read_text(),'root robots sitemap')
-check(not (ROOT/'.openai').exists(),'Sites deployment config copied');check(C.get('customDomain')=='udosignature.com' and base=='https://udosignature.com/' and (D/'CNAME').read_text().strip()==C['customDomain'],'independent custom domain mismatch')
+check(not (ROOT/'.openai').exists(),'Sites deployment config copied');check(not (D/'CNAME').exists(),'custom domain unexpectedly set')
 check((ROOT/'.git').is_dir(),'missing independent Git repository')
 ferry=(ROOT/'assets/ferry.js').read_text()
 check("method:'GET'" in ferry and "credentials:'omit'" in ferry,'ferry read-only GET')

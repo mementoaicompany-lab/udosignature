@@ -1,4 +1,4 @@
-# Coconara public website — udosignature.com
+# Project-path copy. Crawlers use origin /robots.txt; see README.
 User-agent: *
 Allow: /
-Sitemap: https://udosignature.com/sitemap.xml
+Sitemap: https://mementoaicompany-lab.github.io/udosignature/sitemap.xml

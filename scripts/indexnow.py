@@ -18,7 +18,7 @@ def main():
  args=argparse.ArgumentParser(description=__doc__);args.add_argument('--submit',action='store_true');args.add_argument('--output',type=Path);a=args.parse_args()
  c=json.loads((ROOT/'site.config.json').read_text());pages=json.loads((ROOT/'seo.pages.json').read_text())
  base=c['baseUrl'];key=c['indexNowKey'];u=urlparse(base)
- if base!='https://udosignature.com/':raise SystemExit('Review this script before changing the domain.')
+ if base!='https://mementoaicompany-lab.github.io/udosignature/':raise SystemExit('Review this script before changing the domain.')
  if not re.fullmatch(r'[a-fA-F0-9-]{8,128}',key):raise SystemExit('Invalid IndexNow proof.')
  urls=[base+r for r,p in pages.items() if not p.get('noindex')]
  key_url=base+key+'.txt'

@@ -97,7 +97,7 @@ for route,p in PAGES.items():
  target=D/route if route.endswith('.html') else D/route/'index.html';target.parent.mkdir(parents=True,exist_ok=True);target.write_text(render(route,p))
 urls=[(BASE+r,p['updatedAt']) for r,p in PAGES.items() if not p.get('noindex')]
 (D/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+esc(u)+'</loc><lastmod>'+date+'</lastmod></url>' for u,date in urls)+'</urlset>\n')
-(D/'robots.txt').write_text('# Coconara public website — udosignature.com\nUser-agent: *\nAllow: /\nSitemap: '+BASE+'sitemap.xml\n')
+(D/'robots.txt').write_text('# Project-path copy. Crawlers use origin /robots.txt; see README.\nUser-agent: *\nAllow: /\nSitemap: '+BASE+'sitemap.xml\n')
 # IndexNow proof is scoped to this project path; it grants no repository or database access.
 key=C.get('indexNowKey')
 if key:
@@ -105,10 +105,5 @@ if key:
  assert re.fullmatch(r'[a-fA-F0-9-]{8,128}',key)
  (D/(key+'.txt')).write_text(key,encoding='utf-8')
 (D/'.nojekyll').touch()
-domain=C.get('customDomain')
-if domain:
- assert domain==urlparse(BASE).hostname and PATH=='/', 'Custom domain must match the canonical origin'
- (D/'CNAME').write_text(domain+'\n')
-else:
- (D/'CNAME').unlink(missing_ok=True)
+assert not (D/'CNAME').exists()
 print('Built',len(PAGES),'static HTML pages for',BASE)
