@@ -56,4 +56,6 @@ for f in (D/'assets').glob('*.js'):
   check(token not in f.read_text(),'Unapproved writes in '+f.name)
 if (R/'assets/ferry.js').exists():check("method:'GET'" in (R/'assets/ferry.js').read_text(),'Ferry must remain read-only')
 report=dict(site=C.get('project'),pages=len(files),indexed=len(sm),localReferences=refs,publicBytes=sum(f.stat().st_size for f in D.rglob('*') if f.is_file()),errors=errors)
+import runpy
+runpy.run_path(str(R/'scripts/check-seo.py'))
 print(json.dumps(report,ensure_ascii=False,indent=2));raise SystemExit(bool(errors))

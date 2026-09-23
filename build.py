@@ -3,6 +3,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 from html import escape
 import json,shutil,re,hashlib
+from seo_support import enrich,faq_html
 R=Path(__file__).resolve().parent; C=json.loads((R/'site.config.json').read_text()); P=json.loads((R/'pages.json').read_text()); D=R/'docs'; BASE=C['baseUrl']; PREFIX=urlparse(BASE).path
 if D.exists():shutil.rmtree(D)
 D.mkdir();shutil.copytree(R/'assets',D/'assets')
@@ -33,6 +34,8 @@ for route,p in P.items():
    w,h=dims[name]
    return tag[:-1]+f' width="{w}" height="{h}">'
   body=re.sub(r'<img\b[^>]*>',add_image_size,body)
+  editorial=json.loads((R/'seo.content.json').read_text())
+  body=body.replace('{{SEO_FAQ}}',faq_html(editorial.get(route,{}).get('faq',[])))
   extra=''
   if route=='' and C['theme']=='signature':
    extra+=f'<link rel="stylesheet" href="{asset("home-motion.css")}"><script src="{asset("home-motion.js")}" defer></script>'
@@ -45,7 +48,9 @@ for route,p in P.items():
   if C['theme']=='signature':graph.append({'@type':'Organization','@id':BASE+'#organization','name':'우도 시그니처','url':BASE,'logo':BASE+'assets/signature-logo.png','description':'우도의 여행과 로컬 브랜드를 소개하는 우도 시그니처.'})
   if C['theme']=='dalkom':graph.append({'@type':'IceCreamShop','@id':BASE+'#shop','name':'달콤아재','url':BASE,'image':BASE+'assets/dalkom.webp','telephone':'0507-1322-3829','address':{'@type':'PostalAddress','streetAddress':'우도면 우도해안길 810','addressLocality':'제주시','addressRegion':'제주특별자치도','addressCountry':'KR'},'sameAs':['https://map.naver.com/p/entry/place/1497457696','https://blog.naver.com/dalcomajae'],'hasMenu':BASE+'menu/'})
   if route and not p.get('noindex'):graph.append({'@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':C['name'],'item':BASE},{'@type':'ListItem','position':2,'name':p['label'],'item':canonical}]})
+  graph=enrich(graph,C,route,p,editorial)
   verification=f'<meta name="naver-site-verification" content="{C["naverVerification"]}">' if C.get('naverVerification') else ''
+  verification+=f'<meta name="google-site-verification" content="{e(C["googleVerification"])}">' if C.get("googleVerification") else ""
   noindex=p.get('noindex') or C['private'];robots='noindex,nofollow' if C['private'] else 'noindex,follow' if noindex else 'index,follow,max-image-preview:large'
   logo=f'<img src="{asset("signature-logo.png")}" width="328" height="196" alt="우도 시그니처">' if C['theme']=='signature' else f'<span class="wordmark">{C["name"]}<small>{dict(travel="UDO, YOUR WAY",dalkom="SWEET MOMENTS IN UDO",peanut="SMALL SEED, NEW STORY",cafe="A SLOW MOMENT")[C["theme"]]}</small></span>'
   top='비공개 디자인 시안 · 실제 오픈·메뉴·영업 정보가 아닙니다' if C['private'] else '우도 여행과 로컬 브랜드를 한곳에서'
@@ -55,8 +60,12 @@ for route,p in P.items():
   search=f'<form class="tour-search" action="{rel("places/")}" method="get" role="search"><input type="search" name="q" aria-label="우도 여행지 검색" placeholder="어떤 우도를 찾으세요?" maxlength="80"><button type="submit">검색</button></form>' if C['theme']=='travel' else ''
   content=f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(p['title'])}</title><meta name="description" content="{e(p['description'])}"><meta name="robots" content="{robots}"><link rel="canonical" href="{canonical}"><meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:site_name" content="{C['name']}"><meta property="og:title" content="{e(p['title'])}"><meta property="og:description" content="{e(p['description'])}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{BASE}assets/{'dalkom.webp' if C['theme']=='dalkom' else 'kiekee-stand.webp' if C['theme']=='cafe' else 'coast-960.webp'}"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#fffaf4">{verification}<link rel="icon" href="{asset('favicon.svg')}" type="image/svg+xml"><link rel="stylesheet" href="{asset('brand.css')}"><script src="{asset('brand.js')}" defer></script>{extra}<script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False).replace('<',chr(92)+'u003c')}</script></head><body class="{C['theme']}" data-route="{e(route)}" data-site="{C['project']}"><a class="skip" href="#main">본문 바로가기</a><div class="topline"><span>{top}</span><a href="https://udosignature.com/">UDO SIGNATURE FAMILY ↗</a></div><header><div class="header-inner wrap"><a class="brand" href="{rel()}">{logo}</a>{search}<nav aria-label="주 메뉴">{nav}</nav><a class="header-cta" href="{mobile[0]}">{mobile[1]} ↗</a></div></header><main id="main">{body}</main><footer><div class="wrap footer-grid"><div><strong>{C['name']}</strong><p>우도의 로컬 브랜드와 여행 정보를 소개합니다.</p>{business}{contact}</div><div class="family"><p>OUR FAMILY</p>{family}</div></div><div class="wrap legal"><span>© {C['name']}</span><a href="{rel('privacy/')}">개인정보 안내</a><span>LOCAL BRANDS, IN UDO.</span></div></footer><div class="mobile-bar">{link(mobile[0],mobile[1]+' ↗')}</div></body></html>'''
  target=D/route if route.endswith('.html') else D/route/'index.html';target.parent.mkdir(parents=True,exist_ok=True);target.write_text(content)
+key=C.get('indexNowKey')
+if key:
+ assert re.fullmatch(r'[a-fA-F0-9-]{8,128}',key)
+ (D/(key+'.txt')).write_text(key,encoding='utf-8')
 urls=[BASE+r for r,p in P.items() if not p.get('noindex') and not p.get('redirect') and not C['private']]
-(D/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{e(u)}</loc><lastmod>{C.get('designUpdatedAt',C['checkedAt'])}</lastmod></url>' for u in urls)+'</urlset>')
+(D/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{e(u)}</loc><lastmod>{P[u.removeprefix(BASE)].get('updatedAt',C.get('designUpdatedAt',C['checkedAt']))}</lastmod></url>' for u in urls)+'</urlset>')
 (D/'robots.txt').write_text('User-agent: *\n'+('Disallow: /\n' if C['private'] else 'Allow: /\nSitemap: '+BASE+'sitemap.xml\n'))
 (D/'.nojekyll').touch()
 if C['domain']:(D/'CNAME').write_text(C['domain']+'\n')
