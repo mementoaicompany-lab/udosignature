@@ -46,9 +46,9 @@
   function load() {
     if (loading || failed) return;
     loading = true;
-    status.textContent = '우도의 바다를 불러오는 중이에요.';
+    status.textContent = '영상을 불러오는 중입니다.';
     timer = setTimeout(() => {
-      if (!playing) fallback('영상 재생을 눌러보세요. 전체 영상은 YouTube에서도 볼 수 있어요.');
+      if (!playing) fallback('영상 재생 버튼을 눌러주세요. YouTube에서도 시청할 수 있습니다.');
     }, 14000);
     function createPlayer() {
       player = new YT.Player('signature-film-player', {
@@ -77,14 +77,14 @@
           },
           onAutoplayBlocked() {
             requested = false;
-            fallback('소리 없이 재생돼요. 영상 재생 버튼을 눌러주세요.');
+            fallback('영상은 소리 없이 재생됩니다. 재생 버튼을 눌러주세요.');
           },
           onError() {
             failed = true;
             clearTimeout(timer);
             stage.classList.remove('film-visible');
             button.hidden = true;
-            fallback('지금은 영상 연결이 어려워요. ‘영상 전체 보기’로 만나보세요.');
+            fallback('영상을 불러오지 못했습니다. ‘영상 전체 보기’를 이용해 주세요.');
           }
         }
       });
@@ -95,7 +95,7 @@
       const script = document.createElement('script');
       script.src = 'https://www.youtube.com/iframe_api';
       script.async = true;
-      script.onerror = () => { failed = true; clearTimeout(timer); button.hidden = true; fallback('영상은 ‘영상 전체 보기’에서 만나보세요.'); };
+      script.onerror = () => { failed = true; clearTimeout(timer); button.hidden = true; fallback('‘영상 전체 보기’에서 시청해 주세요.'); };
       document.head.append(script);
     }
   }
