@@ -1,39 +1,18 @@
-name: Publish reviewed portal motion story
-on:
-  push:
-    paths: ['.github/workflows/initialize.yml']
-  workflow_dispatch:
+name: Manual static website verification
+on: [workflow_dispatch]
 permissions:
-  contents: write
+  contents: read
 jobs:
-  install:
+  verify:
     if: github.repository == 'mementoaicompany-lab/udosignature'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install exact reviewed website package
+      - name: Build and check static site
         run: |
-          python3 - <<'PYCODE'
-          import hashlib,zipfile,pathlib,shutil
-          p=pathlib.Path('website-package.zip')
-          assert hashlib.sha256(p.read_bytes()).hexdigest() == '9d26206d4e6da4c1804a29dd5a80dcb82caceccb53bb1ff6de639ff6efbcef59'
-          with zipfile.ZipFile(p) as z:
-              for name in z.namelist():
-                  q=pathlib.PurePosixPath(name)
-                  assert not q.is_absolute() and '..' not in q.parts
-                  assert not any(x in q.parts for x in ['.git','.github','.openai'])
-              for name in ['docs','assets','src','scripts','content']:
-                  if pathlib.Path(name).exists(): shutil.rmtree(name)
-              z.extractall('.')
-          p.unlink()
-          PYCODE
           python3 build.py
           python3 scripts/check.py
           node scripts/check-motion.cjs
           for script in assets/*.js; do node --check "$script"; done
           if [ -f scripts/check-ferry.cjs ]; then node scripts/check-ferry.cjs; fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A -- ':!.github'
-          git commit -m 'Publish reviewed portal motion story for udosignature'
-          git push origin HEAD:main
+          git diff --exit-code -- docs
