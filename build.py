@@ -34,6 +34,8 @@ for route,p in P.items():
    return tag[:-1]+f' width="{w}" height="{h}">'
   body=re.sub(r'<img\b[^>]*>',add_image_size,body)
   extra=''
+  if route=='' and C['theme']=='signature':
+   extra+=f'<link rel="stylesheet" href="{asset("home-motion.css")}"><script src="{asset("home-motion.js")}" defer></script>'
   if '{{MAP}}' in body:
    from map_builder import render_map
    body=body.replace('{{MAP}}',render_map(PREFIX));extra+=f'<script src="{asset("travel-map.js")}" defer></script>'
