@@ -18,8 +18,8 @@
 - 우도여행: udosignature-udo 저장소 → https://udo.udosignature.com/
 - 코코나라: udosignature-coconara 저장소 → https://coconara.udosignature.com/
 - 달콤아재: udosignature-dalkom-aje 저장소 → https://dalkom-aje.udosignature.com/
-- 우도씨앗: udosignature-udopeanut 저장소 → https://udopeanut.udosignature.com/ (준비중, noindex)
-- 우도카페: 공개하지 않은 로컬 시안. 배포 저장소·DNS를 만들지 않습니다.
+- 우도씨앗: udosignature-udopeanut 저장소 → https://udopeanut.udosignature.com/ (오픈 준비중, 공개·검색 허용)
+- 우도 키에키: udosignature-udocafe 저장소 → https://udocafe.udosignature.com/ (오픈 준비중, 공개·검색 허용)
 - 기존 예약 고객 안내: coconara 저장소 → https://guide.udosignature.com/ (변경하지 않음)
 - 기존 Sites 안내: https://coconara-udo-guide.mementoaicompany.chatgpt.site/ (변경하지 않음)
 
