@@ -29,3 +29,5 @@ body{overflow-wrap:break-word}button,a,input,summary{-webkit-tap-highlight-color
 @media(prefers-reduced-motion:reduce){.cinema-image{animation:none}.universe-card img,.tour-pick-grid img,.flavor-card,.btn{transition:none}.panorama-toggle{display:none}}
 
 @media(max-width:760px){.scoop-copy h1 br:first-of-type{display:initial}}
+
+@media(max-width:760px){.cinema-copy h1 span{font-size:clamp(38px,12.5vw,90px)}}
