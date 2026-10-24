@@ -3,6 +3,7 @@ from pathlib import Path
 from html import escape
 from html.parser import HTMLParser
 import re
+import hashlib
 import shutil
 
 SOURCE_DIR = 'ferry-source'
@@ -42,6 +43,11 @@ def render_raw_page(root, page, config):
         return '' if name in managed else match.group(0)
 
     inner = re.sub(r'<meta\b[^>]*>', keep_meta, head.group(2), flags=re.I)
+    # Keep a returning visitor's stylesheet in sync with this HTML build.
+    stylesheet = root / SOURCE_DIR / PUBLIC_DIR / 'styles.css'
+    if stylesheet.is_file():
+        version = hashlib.sha256(stylesheet.read_bytes()).hexdigest()[:12]
+        inner = inner.replace('href="/styles.css"', f'href="/styles.css?v={version}"')
     robots = ('noindex,nofollow,noarchive' if page.get('admin')
               else 'noindex,nofollow' if config.get('private')
               else 'noindex,follow' if page.get('noindex')
