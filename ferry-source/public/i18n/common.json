@@ -1,0 +1,968 @@
+{
+  "우도 배시간 · 성산항·종달항 배시간표와 운항 확인 | 우도 시그니처": {
+    "en": "Udo Ferry Times · Seongsan & Jongdal Port Timetables and Service Updates | Udo Signature",
+    "zh-HK": "牛島船期 · 城山港、終達港時間表及航班資訊 | Udo Signature",
+    "ms": "Waktu Feri Udo · Jadual Pelabuhan Seongsan dan Jongdal serta Maklumat Operasi | Udo Signature",
+    "zh-TW": "牛島船班時間 · 城山港、終達港時刻表與航班資訊 | Udo Signature",
+    "ja": "牛島の船の時間 · 城山港・終達港の時刻表と運航案内 | Udo Signature"
+  },
+  "성산항·종달항 ↔ 우도": {
+    "en": "Seongsan & Jongdal Ports ↔ Udo",
+    "zh-HK": "城山港・終達港 ↔ 牛島",
+    "ms": "Pelabuhan Seongsan & Jongdal ↔ Udo",
+    "zh-TW": "城山港・終達港 ↔ 牛島",
+    "ja": "城山港・終達港 ↔ 牛島"
+  },
+  "우도 배시간": {
+    "en": "Udo ferry times",
+    "zh-HK": "牛島船期",
+    "ms": "Waktu feri Udo",
+    "zh-TW": "牛島船班時間",
+    "ja": "牛島の船の時間"
+  },
+  "우도": {
+    "en": "Udo",
+    "zh-HK": "牛島",
+    "ms": "Udo",
+    "zh-TW": "牛島",
+    "ja": "牛島"
+  },
+  "가는 날": {
+    "en": "Travel date",
+    "zh-HK": "出發日期",
+    "ms": "Tarikh perjalanan",
+    "zh-TW": "出發日期",
+    "ja": "出発日"
+  },
+  "안내 기준·입력 시각": {
+    "en": "Information basis · Entry time",
+    "zh-HK": "資訊依據・輸入時間",
+    "ms": "Asas maklumat · Masa kemasukan",
+    "zh-TW": "資訊依據・輸入時間",
+    "ja": "案内の基準・入力時刻"
+  },
+  "정보 입력: 코코나라 운영자": {
+    "en": "Information entered by the Coconara operator",
+    "zh-HK": "資訊由 Coconara 營運者輸入",
+    "ms": "Maklumat dimasukkan oleh pengendali Coconara",
+    "zh-TW": "資訊由 Coconara 經營者輸入",
+    "ja": "情報入力：Coconara運営者"
+  },
+  "입력 기록을 확인하고 있습니다.": {
+    "en": "Checking the entry record.",
+    "zh-HK": "正在查看輸入紀錄。",
+    "ms": "Sedang menyemak rekod kemasukan.",
+    "zh-TW": "正在查看輸入紀錄。",
+    "ja": "入力記録を確認しています。"
+  },
+  "선사 공지 보기": {
+    "en": "View ferry company notices",
+    "zh-HK": "查看船公司公告",
+    "ms": "Lihat pengumuman syarikat feri",
+    "zh-TW": "查看船公司公告",
+    "ja": "船会社のお知らせを見る"
+  },
+  "운항 안내 다시 확인": {
+    "en": "Check service updates again",
+    "zh-HK": "重新查看航班資訊",
+    "ms": "Semak semula maklumat operasi",
+    "zh-TW": "重新查看航班資訊",
+    "ja": "運航案内を再確認"
+  },
+  "성산항 ↔ 우도": {
+    "en": "Seongsan Port ↔ Udo",
+    "zh-HK": "城山港 ↔ 牛島",
+    "ms": "Pelabuhan Seongsan ↔ Udo",
+    "zh-TW": "城山港 ↔ 牛島",
+    "ja": "城山港 ↔ 牛島"
+  },
+  "여행하는 달": {
+    "en": "Travel month",
+    "zh-HK": "出行月份",
+    "ms": "Bulan perjalanan",
+    "zh-TW": "旅行月份",
+    "ja": "旅行する月"
+  },
+  "1월": {
+    "en": "January",
+    "zh-HK": "1月",
+    "ms": "Januari",
+    "zh-TW": "1月",
+    "ja": "1月"
+  },
+  "2월": {
+    "en": "February",
+    "zh-HK": "2月",
+    "ms": "Februari",
+    "zh-TW": "2月",
+    "ja": "2月"
+  },
+  "3월": {
+    "en": "March",
+    "zh-HK": "3月",
+    "ms": "Mac",
+    "zh-TW": "3月",
+    "ja": "3月"
+  },
+  "4월": {
+    "en": "April",
+    "zh-HK": "4月",
+    "ms": "April",
+    "zh-TW": "4月",
+    "ja": "4月"
+  },
+  "5월": {
+    "en": "May",
+    "zh-HK": "5月",
+    "ms": "Mei",
+    "zh-TW": "5月",
+    "ja": "5月"
+  },
+  "6월": {
+    "en": "June",
+    "zh-HK": "6月",
+    "ms": "Jun",
+    "zh-TW": "6月",
+    "ja": "6月"
+  },
+  "7월": {
+    "en": "July",
+    "zh-HK": "7月",
+    "ms": "Julai",
+    "zh-TW": "7月",
+    "ja": "7月"
+  },
+  "8월": {
+    "en": "August",
+    "zh-HK": "8月",
+    "ms": "Ogos",
+    "zh-TW": "8月",
+    "ja": "8月"
+  },
+  "9월": {
+    "en": "September",
+    "zh-HK": "9月",
+    "ms": "September",
+    "zh-TW": "9月",
+    "ja": "9月"
+  },
+  "10월": {
+    "en": "October",
+    "zh-HK": "10月",
+    "ms": "Oktober",
+    "zh-TW": "10月",
+    "ja": "10月"
+  },
+  "11월": {
+    "en": "November",
+    "zh-HK": "11月",
+    "ms": "November",
+    "zh-TW": "11月",
+    "ja": "11月"
+  },
+  "12월": {
+    "en": "December",
+    "zh-HK": "12月",
+    "ms": "Disember",
+    "zh-TW": "12月",
+    "ja": "12月"
+  },
+  "성산·우도 막배": {
+    "en": "Last ferry · Seongsan–Udo",
+    "zh-HK": "城山・牛島尾班船",
+    "ms": "Feri terakhir · Seongsan–Udo",
+    "zh-TW": "城山・牛島末班船",
+    "ja": "城山・牛島の最終便"
+  },
+  "월별 참고 시간입니다. 당일 변경 여부를 확인하세요.": {
+    "en": "Monthly reference times. Check for changes on your travel day.",
+    "zh-HK": "此為每月參考時間，請確認當日有否更改。",
+    "ms": "Waktu rujukan bulanan. Semak perubahan pada hari perjalanan.",
+    "zh-TW": "此為每月參考時間，請確認當日是否有變更。",
+    "ja": "月別の参考時刻です。当日の変更をご確認ください。"
+  },
+  "전체 배시간표": {
+    "en": "Full ferry timetable",
+    "zh-HK": "完整船期表",
+    "ms": "Jadual feri penuh",
+    "zh-TW": "完整船班時刻表",
+    "ja": "船の時刻表を見る"
+  },
+  "선사에 전화": {
+    "en": "Call the ferry company",
+    "zh-HK": "致電船公司",
+    "ms": "Hubungi syarikat feri",
+    "zh-TW": "致電船公司",
+    "ja": "船会社に電話"
+  },
+  "종달항은 별도 시간표를 확인하세요.": {
+    "en": "Check the separate timetable for Jongdal Port.",
+    "zh-HK": "終達港請查看專用時間表。",
+    "ms": "Semak jadual berasingan untuk Pelabuhan Jongdal.",
+    "zh-TW": "終達港請查看專用時刻表。",
+    "ja": "終達港は別の時刻表をご確認ください。"
+  },
+  "우도의 항구와 푸른 해안": {
+    "en": "Udo’s port and blue coastline",
+    "zh-HK": "牛島的港口與碧藍海岸",
+    "ms": "Pelabuhan dan pesisir biru Udo",
+    "zh-TW": "牛島的港口與湛藍海岸",
+    "ja": "牛島の港と青い海岸"
+  },
+  "배에서 내리면, 우도.": {
+    "en": "Step off the ferry, into Udo.",
+    "zh-HK": "下船，就是牛島。",
+    "ms": "Turun feri, tibalah di Udo.",
+    "zh-TW": "下船，就是牛島。",
+    "ja": "船を降りたら、牛島。"
+  },
+  "왕복 요금·신분증": {
+    "en": "Return fares · ID",
+    "zh-HK": "來回票價・身份證明",
+    "ms": "Tambang pergi balik · Pengenalan diri",
+    "zh-TW": "來回票價・身分證件",
+    "ja": "往復運賃・身分証明書"
+  },
+  "차량 가져갈 때": {
+    "en": "Bringing a vehicle",
+    "zh-HK": "攜帶車輛上島",
+    "ms": "Membawa kenderaan",
+    "zh-TW": "攜帶車輛上島",
+    "ja": "車を持ち込むとき"
+  },
+  "결항 확인 방법": {
+    "en": "How to check cancellations",
+    "zh-HK": "如何確認停航",
+    "ms": "Cara menyemak pembatalan",
+    "zh-TW": "如何確認停航",
+    "ja": "欠航の確認方法"
+  },
+  "우도 지도": {
+    "en": "Udo map",
+    "zh-HK": "牛島地圖",
+    "ms": "Peta Udo",
+    "zh-TW": "牛島地圖",
+    "ja": "牛島マップ"
+  },
+  "우도에선, 코코나라": {
+    "en": "In Udo, choose Coconara",
+    "zh-HK": "遊牛島，選 Coconara",
+    "ms": "Di Udo, pilih Coconara",
+    "zh-TW": "遊牛島，選 Coconara",
+    "ja": "牛島では、Coconara"
+  },
+  "하우목동항에서 도보 1분. 내 여행에 맞는 한 대를 골라보세요.": {
+    "en": "A 1-minute walk from Haumokdong Port. Choose a ride that suits your trip.",
+    "zh-HK": "從 Haumokdong 港步行 1 分鐘。選一款適合你行程的車吧。",
+    "ms": "Berjalan kaki 1 minit dari Pelabuhan Haumokdong. Pilih kenderaan yang sesuai untuk perjalanan anda.",
+    "zh-TW": "從 Haumokdong 港步行 1 分鐘。挑一款適合你行程的車吧。",
+    "ja": "ハウモクトン港から徒歩1分。旅に合う一台を選んでみませんか。"
+  },
+  "이용 안내": {
+    "en": "Rental guide",
+    "zh-HK": "使用指南",
+    "ms": "Panduan penggunaan",
+    "zh-TW": "使用指南",
+    "ja": "ご利用案内"
+  },
+  "대여장비 선택": {
+    "en": "Choose a rental vehicle",
+    "zh-HK": "選擇租借車款",
+    "ms": "Pilih kenderaan sewaan",
+    "zh-TW": "選擇租借車款",
+    "ja": "レンタル車両を選ぶ"
+  },
+  "코코": {
+    "en": "Coco",
+    "zh-HK": "Coco",
+    "ms": "Coco",
+    "zh-TW": "Coco",
+    "ja": "ココ"
+  },
+  "파미": {
+    "en": "Fami",
+    "zh-HK": "Fami",
+    "ms": "Fami",
+    "zh-TW": "Fami",
+    "ja": "ファミ"
+  },
+  "오픈카": {
+    "en": "Open Car",
+    "zh-HK": "Open Car",
+    "ms": "Open Car",
+    "zh-TW": "Open Car",
+    "ja": "オープンカー"
+  },
+  "대여장비 목록, 옆으로 넘겨보세요": {
+    "en": "Rental vehicles — swipe sideways to browse",
+    "zh-HK": "租借車款列表，請向左右滑動",
+    "ms": "Senarai kenderaan sewaan — leret ke sisi untuk melihat",
+    "zh-TW": "租借車款列表，請向左右滑動",
+    "ja": "レンタル車両一覧。横にスワイプしてご覧ください"
+  },
+  "1인승 스쿠터": {
+    "en": "1-seat scooter",
+    "zh-HK": "1人踏板車",
+    "ms": "Skuter 1 tempat duduk",
+    "zh-TW": "1人速克達",
+    "ja": "1人乗りスクーター"
+  },
+  "코코 차량 참고 이미지": {
+    "en": "Coco vehicle reference image",
+    "zh-HK": "Coco 車款參考圖片",
+    "ms": "Gambar rujukan kenderaan Coco",
+    "zh-TW": "Coco 車款參考圖片",
+    "ja": "ココの車両参考画像"
+  },
+  "한 사람에 한 대씩, 함께 타요.": {
+    "en": "One ride each, exploring together.",
+    "zh-HK": "一人一車，一起出發。",
+    "ms": "Seorang satu kenderaan, jelajah bersama.",
+    "zh-TW": "一人一車，一起出發。",
+    "ja": "一人一台で、一緒に走ろう。"
+  },
+  "자전거 타기에 익숙한 분께 추천해요.": {
+    "en": "Recommended for confident bicycle riders.",
+    "zh-HK": "推薦給熟悉踩單車的人。",
+    "ms": "Disyorkan untuk mereka yang biasa menunggang basikal.",
+    "zh-TW": "推薦給熟悉騎自行車的人。",
+    "ja": "自転車の運転に慣れている方におすすめです。"
+  },
+  "이용 조건·예약": {
+    "en": "Rental conditions · Booking",
+    "zh-HK": "使用條件・預約",
+    "ms": "Syarat penggunaan · Tempahan",
+    "zh-TW": "使用條件・預約",
+    "ja": "利用条件・予約"
+  },
+  "2인승 전기차": {
+    "en": "2-seat electric vehicle",
+    "zh-HK": "2人電動車",
+    "ms": "Kenderaan elektrik 2 tempat duduk",
+    "zh-TW": "2人電動車",
+    "ja": "2人乗り電気自動車"
+  },
+  "파미 차량 참고 이미지": {
+    "en": "Fami vehicle reference image",
+    "zh-HK": "Fami 車款參考圖片",
+    "ms": "Gambar rujukan kenderaan Fami",
+    "zh-TW": "Fami 車款參考圖片",
+    "ja": "ファミの車両参考画像"
+  },
+  "둘이서 편하게, 지붕 아래 나란히.": {
+    "en": "Sit side by side, comfortably under a roof.",
+    "zh-HK": "兩人並肩坐，有車頂更舒適。",
+    "ms": "Duduk bersebelahan dengan selesa di bawah bumbung.",
+    "zh-TW": "兩人並肩坐，有車頂更舒適。",
+    "ja": "二人でゆったり、屋根の下に並んで。"
+  },
+  "햇빛과 바람을 줄여주는 가림막이 있어요.": {
+    "en": "A canopy helps reduce sun and wind exposure.",
+    "zh-HK": "設有遮擋，減少日曬和風吹。",
+    "ms": "Pelindung membantu mengurangkan cahaya matahari dan angin.",
+    "zh-TW": "設有遮棚，減少日曬和風吹。",
+    "ja": "日差しや風を和らげるカバーがあります。"
+  },
+  "2인승 전동차": {
+    "en": "2-seat electric vehicle",
+    "zh-HK": "2人電動車",
+    "ms": "Kenderaan elektrik 2 tempat duduk",
+    "zh-TW": "2人電動車",
+    "ja": "2人乗り電動車"
+  },
+  "오픈카 차량 참고 이미지": {
+    "en": "Open Car vehicle reference image",
+    "zh-HK": "Open Car 車款參考圖片",
+    "ms": "Gambar rujukan kenderaan Open Car",
+    "zh-TW": "Open Car 車款參考圖片",
+    "ja": "オープンカーの車両参考画像"
+  },
+  "우도의 바닷바람을 가까이.": {
+    "en": "Feel Udo’s sea breeze up close.",
+    "zh-HK": "近距離感受牛島海風。",
+    "ms": "Rasai bayu laut Udo dari dekat.",
+    "zh-TW": "近距離感受牛島海風。",
+    "ja": "牛島の潮風を、すぐそばに。"
+  },
+  "스쿠터 운전 경험이 있는 두 분께 추천해요.": {
+    "en": "Recommended for a pair with scooter-riding experience.",
+    "zh-HK": "推薦給有踏板車駕駛經驗的二人同行旅客。",
+    "ms": "Disyorkan untuk dua orang yang berpengalaman menunggang skuter.",
+    "zh-TW": "推薦給有速克達駕駛經驗的雙人旅客。",
+    "ja": "スクーターの運転経験があるお二人におすすめです。"
+  },
+  "기존 고객 안내의 차량 참고 이미지입니다. 신형 오픈카는 핑크 단일 색상이며, 실제 차종·운전 자격·이용 조건은 예약 페이지를 확인하세요.": {
+    "en": "These are reference images from the existing customer guide. The new Open Car is available only in pink. Check the booking page for the actual model, driving qualifications and rental conditions.",
+    "zh-HK": "這些是現有顧客指南中的車款參考圖片。新款 Open Car 只有粉紅色；實際車款、駕駛資格及使用條件請查看預約頁面。",
+    "ms": "Ini ialah gambar rujukan kenderaan daripada panduan pelanggan sedia ada. Open Car baharu hanya tersedia dalam warna merah jambu. Semak halaman tempahan untuk model sebenar, kelayakan memandu dan syarat penggunaan.",
+    "zh-TW": "這些是既有顧客指南中的車款參考圖片。新款 Open Car 僅有粉紅色；實際車款、駕駛資格及使用條件請查看預約頁面。",
+    "ja": "既存のお客様向け案内に掲載した車両の参考画像です。新型オープンカーはピンク一色です。実際の車種・運転資格・利用条件は予約ページでご確認ください。"
+  },
+  "코코나라는": {
+    "en": "Coconara is at ",
+    "zh-HK": "Coconara 位於",
+    "ms": "Coconara terletak di ",
+    "zh-TW": "Coconara 位於",
+    "ja": "Coconaraは"
+  },
+  "하우목동항": {
+    "en": "Haumokdong Port",
+    "zh-HK": "Haumokdong 港",
+    "ms": "Pelabuhan Haumokdong",
+    "zh-TW": "Haumokdong 港",
+    "ja": "ハウモクトン港"
+  },
+  "에 있어요.": {
+    "en": ".",
+    "zh-HK": "。",
+    "ms": ".",
+    "zh-TW": "。",
+    "ja": "にあります。"
+  },
+  "배에 오르기 전, 도착 항구를 확인해 주세요.": {
+    "en": "Check your arrival port before boarding.",
+    "zh-HK": "上船前，請確認抵達的港口。",
+    "ms": "Semak pelabuhan ketibaan sebelum menaiki feri.",
+    "zh-TW": "上船前，請確認抵達的港口。",
+    "ja": "乗船前に到着する港をご確認ください。"
+  },
+  "하고수동 바다 앞 달콤아재 땅콩 아이스크림": {
+    "en": "Dalkom Ajae peanut ice cream by the sea at Hagosudong",
+    "zh-HK": "Hagosudong 海邊的 Dalkom Ajae 花生雪糕",
+    "ms": "Ais krim kacang tanah Dalkom Ajae di tepi laut Hagosudong",
+    "zh-TW": "Hagosudong 海邊的 Dalkom Ajae 花生冰淇淋",
+    "ja": "ハゴスドンの海辺にあるダルコムアジェのピーナッツアイスクリーム"
+  },
+  "하고수동 해변 앞": {
+    "en": "By Hagosudong Beach",
+    "zh-HK": "Hagosudong 海灘前",
+    "ms": "Di hadapan Pantai Hagosudong",
+    "zh-TW": "Hagosudong 海灘前",
+    "ja": "ハゴスドン海水浴場の前"
+  },
+  "한 바퀴 돌고,": {
+    "en": "After a trip around the island,",
+    "zh-HK": "環島一圈後，",
+    "ms": "Selepas mengelilingi pulau,",
+    "zh-TW": "環島一圈後，",
+    "ja": "島をひと回りしたら、"
+  },
+  "달콤아재": {
+    "en": "Dalkom Ajae",
+    "zh-HK": "Dalkom Ajae",
+    "ms": "Dalkom Ajae",
+    "zh-TW": "Dalkom Ajae",
+    "ja": "ダルコムアジェ"
+  },
+  "우도땅콩 아이스크림 한 컵.": {
+    "en": "a cup of Udo peanut ice cream.",
+    "zh-HK": "來一杯牛島花生雪糕。",
+    "ms": "nikmati secawan ais krim kacang tanah Udo.",
+    "zh-TW": "來一杯牛島花生冰淇淋。",
+    "ja": "牛島ピーナッツアイスクリームを一杯。"
+  },
+  "바다 앞에서 잠깐 쉬어가세요.": {
+    "en": "Take a break by the sea.",
+    "zh-HK": "在海邊稍作休息。",
+    "ms": "Berehat sebentar di tepi laut.",
+    "zh-TW": "在海邊稍作休息。",
+    "ja": "海を眺めて、ひと休み。"
+  },
+  "20% 할인": {
+    "en": "20% off",
+    "zh-HK": "20% 折扣",
+    "ms": "Diskaun 20%",
+    "zh-TW": "20% 折扣",
+    "ja": "20%割引"
+  },
+  "코코나라 예약 고객": {
+    "en": "Coconara booking customers",
+    "zh-HK": "已預約 Coconara 的顧客",
+    "ms": "Pelanggan yang menempah di Coconara",
+    "zh-TW": "已預約 Coconara 的顧客",
+    "ja": "Coconaraをご予約のお客様"
+  },
+  "매장 카운터에서 쿠폰을 받아오세요.": {
+    "en": "Pick up your coupon at the shop counter.",
+    "zh-HK": "請到店內櫃枱領取優惠券。",
+    "ms": "Ambil kupon anda di kaunter kedai.",
+    "zh-TW": "請到店內櫃檯領取優惠券。",
+    "ja": "店舗のカウンターでクーポンをお受け取りください。"
+  },
+  "메뉴·매장 보기": {
+    "en": "View menu & shop",
+    "zh-HK": "查看餐牌・店舖",
+    "ms": "Lihat menu & kedai",
+    "zh-TW": "查看菜單・店家",
+    "ja": "メニュー・店舗を見る"
+  },
+  "배 타기 전 알아두세요": {
+    "en": "Before you board",
+    "zh-HK": "上船前須知",
+    "ms": "Sebelum menaiki feri",
+    "zh-TW": "上船前須知",
+    "ja": "乗船前に知っておきたいこと"
+  },
+  "성산항에서 우도 가는 법": {
+    "en": "Getting to Udo from Seongsan Port",
+    "zh-HK": "從城山港前往牛島",
+    "ms": "Cara ke Udo dari Pelabuhan Seongsan",
+    "zh-TW": "從城山港前往牛島",
+    "ja": "城山港から牛島への行き方"
+  },
+  "발권·승선·도착 항구": {
+    "en": "Tickets · Boarding · Arrival ports",
+    "zh-HK": "購票・登船・抵達港口",
+    "ms": "Tiket · Menaiki feri · Pelabuhan ketibaan",
+    "zh-TW": "購票・登船・抵達港口",
+    "ja": "発券・乗船・到着港"
+  },
+  "종달항 배시간과 이용 안내": {
+    "en": "Jongdal Port ferry times & guide",
+    "zh-HK": "終達港船期及使用指南",
+    "ms": "Waktu feri & panduan Pelabuhan Jongdal",
+    "zh-TW": "終達港船班時間與使用指南",
+    "ja": "終達港の船の時間と利用案内"
+  },
+  "노선과 귀항편 확인": {
+    "en": "Check routes & return ferries",
+    "zh-HK": "確認航線及回程船班",
+    "ms": "Semak laluan & feri pulang",
+    "zh-TW": "確認航線與回程船班",
+    "ja": "航路と帰りの便を確認"
+  },
+  "배 요금과 승선 준비": {
+    "en": "Fares & boarding essentials",
+    "zh-HK": "船票價錢及登船準備",
+    "ms": "Tambang & persediaan menaiki feri",
+    "zh-TW": "船票費用與登船準備",
+    "ja": "運賃と乗船の準備"
+  },
+  "렌터카를 가져가도 되나요?": {
+    "en": "Can I bring a rental car?",
+    "zh-HK": "可以帶租車上島嗎？",
+    "ms": "Bolehkah saya membawa kereta sewa?",
+    "zh-TW": "可以把租賃汽車帶上島嗎？",
+    "ja": "レンタカーを持ち込めますか？"
+  },
+  "차량 반입·선적 조건": {
+    "en": "Vehicle entry & loading conditions",
+    "zh-HK": "車輛入島・運載條件",
+    "ms": "Syarat kemasukan & pengangkutan kenderaan",
+    "zh-TW": "車輛入島・運載條件",
+    "ja": "車両の持ち込み・積載条件"
+  },
+  "많이 묻는 질문": {
+    "en": "Frequently asked questions",
+    "zh-HK": "常見問題",
+    "ms": "Soalan lazim",
+    "zh-TW": "常見問題",
+    "ja": "よくある質問"
+  },
+  "월별 기본 시간표가 있지만 날씨와 현장 상황에 따라 바뀔 수 있습니다. 첫배·막배는 선사 공지와 당일 항구 안내를 함께 확인하세요.": {
+    "en": "There is a basic monthly timetable, but weather and conditions at the port may cause changes. Check both ferry company notices and the port’s same-day information for first and last departures.",
+    "zh-HK": "每月有基本時間表，但可能因天氣及現場情況而更改。首班及尾班船請同時查看船公司公告和港口當日資訊。",
+    "ms": "Terdapat jadual asas bulanan, tetapi cuaca dan keadaan di pelabuhan boleh menyebabkan perubahan. Untuk feri pertama dan terakhir, semak pengumuman syarikat feri serta maklumat pelabuhan pada hari tersebut.",
+    "zh-TW": "每月有基本時刻表，但可能因天氣及現場狀況而變更。首班與末班船請同時查看船公司公告和港口當日資訊。",
+    "ja": "月別の基本時刻表はありますが、天候や現場の状況によって変更される場合があります。始発・最終便は船会社のお知らせと当日の港の案内を併せてご確認ください。"
+  },
+  "우도까지 얼마나 걸리나요?": {
+    "en": "How long does the ferry to Udo take?",
+    "zh-HK": "乘船到牛島要多久？",
+    "ms": "Berapa lama perjalanan feri ke Udo?",
+    "zh-TW": "搭船到牛島要多久？",
+    "ja": "牛島までどのくらいかかりますか？"
+  },
+  "제주관광공사 안내 기준 항로에 따라 약 10~15분입니다. 대기·발권·승선 시간은 별도로 필요합니다.": {
+    "en": "According to the Jeju Tourism Organization, the crossing takes about 10~15 minutes, depending on the route. Allow extra time for waiting, ticketing and boarding.",
+    "zh-HK": "根據濟州觀光公社的資訊，航程視航線而定，約需 10~15 分鐘。等候、購票及登船需另預留時間。",
+    "ms": "Menurut Pertubuhan Pelancongan Jeju, perjalanan mengambil kira-kira 10~15 minit, bergantung pada laluan. Masa tambahan diperlukan untuk menunggu, membeli tiket dan menaiki feri.",
+    "zh-TW": "根據濟州觀光公社的資訊，航程依航線而定，約需 10~15 分鐘。等候、購票與登船需另預留時間。",
+    "ja": "済州観光公社の案内では、航路により約10~15分です。待ち時間・発券・乗船には別途時間が必要です。"
+  },
+  "코코나라 예약에 배표도 포함되나요?": {
+    "en": "Does a Coconara booking include ferry tickets?",
+    "zh-HK": "Coconara 預約包括船票嗎？",
+    "ms": "Adakah tempahan Coconara termasuk tiket feri?",
+    "zh-TW": "Coconara 預約包含船票嗎？",
+    "ja": "Coconaraの予約に船のチケットも含まれますか？"
+  },
+  "차량 예약과 배 승선권은 별도입니다. 정확한 포함 사항과 이용 조건은 예약 페이지에서 확인하세요.": {
+    "en": "Vehicle bookings and ferry tickets are separate. Check the booking page for exactly what is included and the rental conditions.",
+    "zh-HK": "車輛預約與船票是分開的。實際包含項目及使用條件請查看預約頁面。",
+    "ms": "Tempahan kenderaan dan tiket feri adalah berasingan. Semak halaman tempahan untuk butiran tepat tentang perkara yang termasuk dan syarat penggunaan.",
+    "zh-TW": "車輛預約與船票是分開的。確切包含項目及使用條件請查看預約頁面。",
+    "ja": "車両の予約と乗船券は別です。正確な内容と利用条件は予約ページでご確認ください。"
+  },
+  "현재 위치": {
+    "en": "Current location",
+    "zh-HK": "目前位置",
+    "ms": "Lokasi semasa",
+    "zh-TW": "目前位置",
+    "ja": "現在地"
+  },
+  "운항 안내 새로고침": {
+    "en": "Refresh service information",
+    "zh-HK": "重新整理航班資訊",
+    "ms": "Muat semula maklumat operasi",
+    "zh-TW": "重新整理航班資訊",
+    "ja": "運航案内を更新"
+  },
+  "우도 시그니처": {
+    "en": "Udo Signature",
+    "zh-HK": "Udo Signature",
+    "ms": "Udo Signature",
+    "zh-TW": "Udo Signature",
+    "ja": "Udo Signature"
+  },
+  "주요 메뉴": {
+    "en": "Main navigation",
+    "zh-HK": "主要選單",
+    "ms": "Menu utama",
+    "zh-TW": "主要選單",
+    "ja": "メインメニュー"
+  },
+  "대여장비": {
+    "en": "Rentals",
+    "zh-HK": "租借車款",
+    "ms": "Sewaan",
+    "zh-TW": "租借車款",
+    "ja": "レンタル車両"
+  },
+  "아이스크림": {
+    "en": "Ice cream",
+    "zh-HK": "雪糕",
+    "ms": "Ais krim",
+    "zh-TW": "冰淇淋",
+    "ja": "アイスクリーム"
+  },
+  "언어 선택": {
+    "en": "Choose a language",
+    "zh-HK": "選擇語言",
+    "ms": "Pilih bahasa",
+    "zh-TW": "選擇語言",
+    "ja": "言語を選択"
+  },
+  "한국어": {
+    "en": "Korean",
+    "zh-HK": "韓文",
+    "ms": "Bahasa Korea",
+    "zh-TW": "韓文",
+    "ja": "韓国語"
+  },
+  "코코나라가 만드는 우도 여행 안내": {
+    "en": "An Udo travel guide by Coconara",
+    "zh-HK": "由 Coconara 製作的牛島旅遊指南",
+    "ms": "Panduan perjalanan Udo oleh Coconara",
+    "zh-TW": "由 Coconara 製作的牛島旅遊指南",
+    "ja": "Coconaraがつくる牛島の旅案内"
+  },
+  "하단 메뉴": {
+    "en": "Footer navigation",
+    "zh-HK": "頁尾選單",
+    "ms": "Menu pengaki",
+    "zh-TW": "頁尾選單",
+    "ja": "フッターメニュー"
+  },
+  "우리의 브랜드": {
+    "en": "Our brands",
+    "zh-HK": "我們的品牌",
+    "ms": "Jenama kami",
+    "zh-TW": "我們的品牌",
+    "ja": "私たちのブランド"
+  },
+  "예약 고객 안내": {
+    "en": "Guide for booked customers",
+    "zh-HK": "預約顧客指南",
+    "ms": "Panduan pelanggan yang telah menempah",
+    "zh-TW": "預約顧客指南",
+    "ja": "ご予約のお客様向け案内"
+  },
+  "운영자 설정": {
+    "en": "Operator settings",
+    "zh-HK": "營運者設定",
+    "ms": "Tetapan pengendali",
+    "zh-TW": "經營者設定",
+    "ja": "運営者設定"
+  },
+  "선사·항만의 공식 홈페이지가 아닙니다. 실제 운항과 요금은 선사·현장 안내를 확인하세요.": {
+    "en": "This is not an official ferry company or port website. Confirm actual services and fares with the ferry company or at the port.",
+    "zh-HK": "本網站並非船公司或港口的官方網站。實際航班及票價請向船公司或現場確認。",
+    "ms": "Ini bukan laman rasmi syarikat feri atau pelabuhan. Sahkan operasi sebenar dan tambang dengan syarikat feri atau di pelabuhan.",
+    "zh-TW": "本網站並非船公司或港口的官方網站。實際航班與票價請向船公司或現場確認。",
+    "ja": "船会社・港湾の公式サイトではありません。実際の運航と運賃は船会社・現場の案内をご確認ください。"
+  },
+  "사업자 정보·사진 출처": {
+    "en": "Business details · Photo credits",
+    "zh-HK": "商業資料・圖片來源",
+    "ms": "Maklumat perniagaan · Kredit foto",
+    "zh-TW": "商家資訊・照片來源",
+    "ja": "事業者情報・写真の出典"
+  },
+  "운영: 코코나라 · 대표 김경택 (공동사업자 김지원)": {
+    "en": "Operated by Coconara · Representative Kim Gyeong-taek (co-owner Kim Ji-won)",
+    "zh-HK": "營運：Coconara・代表 Kim Gyeong-taek（共同經營者 Kim Ji-won）",
+    "ms": "Dikendalikan oleh Coconara · Wakil Kim Gyeong-taek (pemilik bersama Kim Ji-won)",
+    "zh-TW": "經營：Coconara・代表 Kim Gyeong-taek（共同經營者 Kim Ji-won）",
+    "ja": "運営：Coconara・代表 Kim Gyeong-taek（共同事業者 Kim Ji-won）"
+  },
+  "사업자등록번호 101-34-52349": {
+    "en": "Business registration no. 101-34-52349",
+    "zh-HK": "商業登記號碼 101-34-52349",
+    "ms": "No. pendaftaran perniagaan 101-34-52349",
+    "zh-TW": "營業登記號碼 101-34-52349",
+    "ja": "事業者登録番号 101-34-52349"
+  },
+  "매장 문의 0507-1373-2359": {
+    "en": "Shop enquiries: 0507-1373-2359",
+    "zh-HK": "店舖查詢 0507-1373-2359",
+    "ms": "Pertanyaan kedai: 0507-1373-2359",
+    "zh-TW": "店家洽詢 0507-1373-2359",
+    "ja": "店舗へのお問い合わせ 0507-1373-2359"
+  },
+  "해안 사진: 제주영상문화산업진흥원 · Wikimedia Commons · 공공누리 제1유형. 차량 이미지·디저트 사진: 코코나라·달콤아재. 지도: OpenStreetMap 기여자.": {
+    "en": "Coastline photo: Jeju Film and Culture Industry Promotion Agency · Wikimedia Commons · Korea Open Government License Type 1. Vehicle and dessert photos: Coconara · Dalkom Ajae. Map: OpenStreetMap contributors.",
+    "zh-HK": "海岸照片：濟州影像文化產業振興院・Wikimedia Commons・韓國公共著作開放授權（KOGL）第1類。車輛及甜品照片：Coconara・Dalkom Ajae。地圖：OpenStreetMap 貢獻者。",
+    "ms": "Foto pesisir: Agensi Promosi Industri Filem dan Budaya Jeju · Wikimedia Commons · Lesen Kerajaan Terbuka Korea Jenis 1. Gambar kenderaan dan pencuci mulut: Coconara · Dalkom Ajae. Peta: penyumbang OpenStreetMap.",
+    "zh-TW": "海岸照片：濟州影像文化產業振興院・Wikimedia Commons・韓國公共著作開放授權（KOGL）第1類。車輛及甜點照片：Coconara・Dalkom Ajae。地圖：OpenStreetMap 貢獻者。",
+    "ja": "海岸写真：済州映像文化産業振興院・Wikimedia Commons・韓国公共著作物自由利用許諾（KOGL）第1類型。車両・デザート写真：Coconara・ダルコムアジェ。地図：OpenStreetMapの貢献者。"
+  },
+  "© 우도 시그니처": {
+    "en": "© Udo Signature",
+    "zh-HK": "© Udo Signature",
+    "ms": "© Udo Signature",
+    "zh-TW": "© Udo Signature",
+    "ja": "© Udo Signature"
+  },
+  "빠른 메뉴": {
+    "en": "Quick navigation",
+    "zh-HK": "快捷選單",
+    "ms": "Menu pantas",
+    "zh-TW": "快速選單",
+    "ja": "クイックメニュー"
+  },
+  "배시간": {
+    "en": "Ferry times",
+    "zh-HK": "船期",
+    "ms": "Waktu feri",
+    "zh-TW": "船班時間",
+    "ja": "船の時間"
+  },
+  "지도": {
+    "en": "Map",
+    "zh-HK": "地圖",
+    "ms": "Peta",
+    "zh-TW": "地圖",
+    "ja": "地図"
+  },
+  "정보 입력: 코코나라 운영자 · 성산–우도 참고 안내 · 항구·방향별 확인 필요": {
+    "en": "Entered by the Coconara operator · Seongsan–Udo reference information · Confirm the port and direction",
+    "zh-HK": "由 Coconara 營運者輸入・城山–牛島參考資訊・須按港口及方向確認",
+    "ms": "Dimasukkan oleh pengendali Coconara · Maklumat rujukan Seongsan–Udo · Sahkan mengikut pelabuhan dan arah perjalanan",
+    "zh-TW": "由 Coconara 經營者輸入・城山–牛島參考資訊・須依港口及方向確認",
+    "ja": "情報入力：Coconara運営者・城山–牛島の参考案内・港と方向ごとに確認が必要"
+  },
+  "운영자 확인 · 정상": {
+    "en": "Operator entry · Normal service",
+    "zh-HK": "營運者記錄・正常航行",
+    "ms": "Rekod pengendali · Operasi biasa",
+    "zh-TW": "經營者紀錄・正常航行",
+    "ja": "運営者確認・通常運航"
+  },
+  "운영자 확인 · 결항": {
+    "en": "Operator entry · Cancelled",
+    "zh-HK": "營運者記錄・停航",
+    "ms": "Rekod pengendali · Dibatalkan",
+    "zh-TW": "經營者紀錄・停航",
+    "ja": "運営者確認・欠航"
+  },
+  "운영자 확인 · 단축": {
+    "en": "Operator entry · Shortened service",
+    "zh-HK": "營運者記錄・縮短運航時間",
+    "ms": "Rekod pengendali · Waktu operasi dipendekkan",
+    "zh-TW": "經營者紀錄・縮短運航時間",
+    "ja": "運営者確認・短縮運航"
+  },
+  "코코나라 운영자가 정상 운항으로 입력한 안내입니다. 다음 배와 막배의 실제 출항 시각은 항구에 확인해 주세요.": {
+    "en": "The Coconara operator has entered normal service. Confirm the actual departure times of the next and last ferries with the port.",
+    "zh-HK": "Coconara 營運者輸入的狀態為正常航行。下一班及尾班船的實際開船時間，請向港口確認。",
+    "ms": "Pengendali Coconara telah memasukkan status operasi biasa. Sahkan waktu berlepas sebenar feri seterusnya dan terakhir dengan pihak pelabuhan.",
+    "zh-TW": "Coconara 經營者輸入的狀態為正常航行。下一班與末班船的實際開船時間，請向港口確認。",
+    "ja": "Coconara運営者が通常運航として入力した案内です。次の便と最終便の実際の出港時刻は港にご確認ください。"
+  },
+  "코코나라 운영자가 결항으로 입력한 안내입니다. 출발 전에 이용할 항구와 방향의 운항 여부를 다시 확인해 주세요.": {
+    "en": "The Coconara operator has entered a cancellation. Before leaving, reconfirm service for your port and direction of travel.",
+    "zh-HK": "Coconara 營運者輸入的狀態為停航。出發前，請再次確認你所使用的港口及方向是否有船運行。",
+    "ms": "Pengendali Coconara telah memasukkan status pembatalan. Sebelum bertolak, sahkan semula operasi bagi pelabuhan dan arah perjalanan anda.",
+    "zh-TW": "Coconara 經營者輸入的狀態為停航。出發前，請再次確認你要使用的港口與方向是否有船班運行。",
+    "ja": "Coconara運営者が欠航として入力した案内です。出発前に、ご利用の港と方向の運航状況を再確認してください。"
+  },
+  "코코나라 운영자가 단축 운항으로 입력한 안내입니다. 적용 항구와 방향, 실제 막배 시각을 항구에 다시 확인해 주세요.": {
+    "en": "The Coconara operator has entered shortened service. Reconfirm the affected port and direction, and the actual last departure time, with the port.",
+    "zh-HK": "Coconara 營運者輸入的狀態為縮短運航時間。適用港口、方向及實際尾班船時間，請再次向港口確認。",
+    "ms": "Pengendali Coconara telah memasukkan status waktu operasi dipendekkan. Sahkan semula pelabuhan dan arah yang terlibat serta waktu berlepas feri terakhir yang sebenar dengan pihak pelabuhan.",
+    "zh-TW": "Coconara 經營者輸入的狀態為縮短運航時間。適用港口、方向與實際末班船時間，請再次向港口確認。",
+    "ja": "Coconara運営者が短縮運航として入力した案内です。対象の港と方向、実際の最終便の時刻を港に再確認してください。"
+  },
+  " · 한국시간": {
+    "en": " · Korea time",
+    "zh-HK": " ・韓國時間",
+    "ms": " · Waktu Korea",
+    "zh-TW": " ・韓國時間",
+    "ja": " ・韓国時間"
+  },
+  "운영자 입력 ": {
+    "en": "Operator entry: ",
+    "zh-HK": "營運者輸入：",
+    "ms": "Dimasukkan oleh pengendali: ",
+    "zh-TW": "經營者輸入：",
+    "ja": "運営者入力："
+  },
+  " · 한국시간 · 오늘 자정까지 적용": {
+    "en": " · Korea time · Valid until midnight tonight",
+    "zh-HK": " ・韓國時間・有效至今晚午夜",
+    "ms": " · Waktu Korea · Sah sehingga tengah malam ini",
+    "zh-TW": " ・韓國時間・有效至今晚午夜",
+    "ja": " ・韓国時間・本日深夜0時まで適用"
+  },
+  "운영자 입력 막배 ": {
+    "en": "Last ferry entered by operator: ",
+    "zh-HK": "營運者輸入的尾班船：",
+    "ms": "Feri terakhir yang dimasukkan oleh pengendali: ",
+    "zh-TW": "經營者輸入的末班船：",
+    "ja": "運営者入力の最終便："
+  },
+  " · 적용 항구·방향 재확인 필요": {
+    "en": " · Reconfirm the applicable port and direction",
+    "zh-HK": " ・須再次確認適用港口及方向",
+    "ms": " · Sahkan semula pelabuhan dan arah yang berkenaan",
+    "zh-TW": " ・須再次確認適用港口與方向",
+    "ja": " ・対象の港と方向の再確認が必要"
+  },
+  "정상운항 기본 안내": {
+    "en": "Standard service information",
+    "zh-HK": "一般航班參考資訊",
+    "ms": "Maklumat operasi biasa",
+    "zh-TW": "一般航班參考資訊",
+    "ja": "通常運航の基本案内"
+  },
+  "평상시 시간표 기준입니다. 당일 운항 확정 정보는 선사에 확인하세요.": {
+    "en": "Based on the regular timetable. Confirm today’s actual service with the ferry company.",
+    "zh-HK": "以平日時間表為依據。當日實際航班請向船公司確認。",
+    "ms": "Berdasarkan jadual biasa. Sahkan operasi sebenar hari ini dengan syarikat feri.",
+    "zh-TW": "以平日時刻表為依據。當日實際航班請向船公司確認。",
+    "ja": "通常の時刻表に基づく案内です。当日の確定した運航情報は船会社にご確認ください。"
+  },
+  "오늘 등록된 특이사항 없음 · 당일 운항을 확인했다는 뜻은 아닙니다.": {
+    "en": "No special notices entered today · This does not mean today’s service has been confirmed.",
+    "zh-HK": "今日未有特別事項記錄・不代表已確認當日航班。",
+    "ms": "Tiada makluman khas dimasukkan hari ini · Ini tidak bermakna operasi hari ini telah disahkan.",
+    "zh-TW": "今日未登錄特殊事項・不代表已確認當日航班。",
+    "ja": "本日の特記事項の登録なし・当日の運航を確認済みという意味ではありません。"
+  },
+  "운항 안내 연결 확인 필요": {
+    "en": "Service information connection needs checking",
+    "zh-HK": "須檢查航班資訊連線",
+    "ms": "Sambungan maklumat operasi perlu disemak",
+    "zh-TW": "須檢查航班資訊連線",
+    "ja": "運航案内の接続確認が必要"
+  },
+  "코코나라 운영자의 당일 입력 기록을 불러오고 있습니다. 탑승 전 항구에 확인해 주세요.": {
+    "en": "Loading today’s entry from the Coconara operator. Confirm with the port before boarding.",
+    "zh-HK": "正在載入 Coconara 營運者今日的輸入紀錄。登船前請向港口確認。",
+    "ms": "Sedang memuatkan rekod hari ini daripada pengendali Coconara. Sahkan dengan pihak pelabuhan sebelum menaiki feri.",
+    "zh-TW": "正在載入 Coconara 經營者今日的輸入紀錄。登船前請向港口確認。",
+    "ja": "Coconara運営者の本日の入力記録を読み込んでいます。乗船前に港にご確認ください。"
+  },
+  "운항 안내를 불러오지 못했습니다. 다시 확인하거나 항구에 전화해 주세요.": {
+    "en": "Unable to load service information. Try again or call the port.",
+    "zh-HK": "未能載入航班資訊。請重試或致電港口。",
+    "ms": "Maklumat operasi tidak dapat dimuatkan. Cuba lagi atau hubungi pelabuhan.",
+    "zh-TW": "無法載入航班資訊。請重試或致電港口。",
+    "ja": "運航案内を読み込めませんでした。再確認するか、港にお電話ください。"
+  },
+  "저장된 운항 안내의 형식이나 날짜를 확인하지 못했습니다. 새로고침하거나 선사에 오늘의 운항 여부를 확인해 주세요.": {
+    "en": "Unable to verify the format or date of the saved service information. Refresh or check today’s service with the ferry company.",
+    "zh-HK": "未能確認已儲存航班資訊的格式或日期。請重新整理，或向船公司確認今日是否運行。",
+    "ms": "Format atau tarikh maklumat operasi yang disimpan tidak dapat disahkan. Muat semula atau semak operasi hari ini dengan syarikat feri.",
+    "zh-TW": "無法確認已儲存航班資訊的格式或日期。請重新整理，或向船公司確認今日是否運行。",
+    "ja": "保存された運航案内の形式または日付を確認できませんでした。再読み込みするか、船会社に本日の運航状況をご確認ください。"
+  },
+  "연결 및 기록 확인 후 안내 · 당일 운항은 선사에 확인": {
+    "en": "Information follows after connection and record checks · Confirm today’s service with the ferry company",
+    "zh-HK": "待連線及紀錄確認後提供資訊・當日航班請向船公司確認",
+    "ms": "Maklumat akan dipaparkan selepas sambungan dan rekod disemak · Sahkan operasi hari ini dengan syarikat feri",
+    "zh-TW": "待連線與紀錄確認後提供資訊・當日航班請向船公司確認",
+    "ja": "接続と記録の確認後に案内・当日の運航は船会社に確認"
+  },
+  "확인 중…": {
+    "en": "Checking…",
+    "zh-HK": "確認中…",
+    "ms": "Sedang menyemak…",
+    "zh-TW": "確認中…",
+    "ja": "確認中…"
+  },
+  "한국시간": {
+    "en": "Korea time",
+    "zh-HK": "韓國時間",
+    "ms": "Waktu Korea",
+    "zh-TW": "韓國時間",
+    "ja": "韓国時間"
+  },
+  "운영자 메모 (원문)": {
+    "en": "Operator note (original text)",
+    "zh-HK": "營運者備註（原文）",
+    "ms": "Nota pengendali (teks asal)",
+    "zh-TW": "經營者備註（原文）",
+    "ja": "運営者メモ（原文）"
+  },
+  "운영자 입력": {
+    "en": "Operator entry",
+    "zh-HK": "營運者輸入",
+    "ms": "Kemasukan pengendali",
+    "zh-TW": "經營者輸入",
+    "ja": "運営者入力"
+  },
+  "오늘 자정까지 적용": {
+    "en": "Valid until midnight tonight",
+    "zh-HK": "有效至今晚午夜",
+    "ms": "Sah sehingga tengah malam ini",
+    "zh-TW": "有效至今晚午夜",
+    "ja": "本日深夜0時まで適用"
+  },
+  "운영자 입력 막배": {
+    "en": "Last ferry entered by operator",
+    "zh-HK": "營運者輸入的尾班船",
+    "ms": "Feri terakhir yang dimasukkan oleh pengendali",
+    "zh-TW": "經營者輸入的末班船",
+    "ja": "運営者入力の最終便"
+  },
+  "적용 항구·방향 재확인 필요": {
+    "en": "Reconfirm the applicable port and direction",
+    "zh-HK": "須再次確認適用港口及方向",
+    "ms": "Sahkan semula pelabuhan dan arah yang berkenaan",
+    "zh-TW": "須再次確認適用港口與方向",
+    "ja": "対象の港と方向の再確認が必要"
+  },
+  "참고 막배": {
+    "en": "Reference last ferry",
+    "zh-HK": "尾班船參考時間",
+    "ms": "Feri terakhir rujukan",
+    "zh-TW": "末班船參考時間",
+    "ja": "参考の最終便"
+  },
+  "언어를 변경했습니다.": {
+    "en": "Language changed.",
+    "zh-HK": "已更改語言。",
+    "ms": "Bahasa telah ditukar.",
+    "zh-TW": "已變更語言。",
+    "ja": "言語を変更しました。"
+  },
+  "사이트 안내": {
+    "en": "About this guide",
+    "zh-HK": "網站介紹",
+    "ms": "Tentang panduan",
+    "zh-TW": "網站介紹",
+    "ja": "サイト案内"
+  }
+}

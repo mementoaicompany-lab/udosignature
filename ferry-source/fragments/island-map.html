@@ -1,0 +1,24 @@
+<div id="coco-road-map" data-localized="true" aria-label="우도 관광 지도">
+  <div class="um-header"><div><div class="um-eyebrow">COCONARA · UDO</div><h2>우도 한 바퀴 코스</h2></div></div>
+  <div class="um-tools"><button type="button" class="um-food-switch" aria-pressed="false">맛집 보기 <span>OFF</span></button><button type="button" class="um-gps" aria-pressed="false">◎ 내 위치 켜기</button></div>
+  <p class="um-gps-status" role="status" aria-live="polite">내 위치를 켜면 위치 접근 권한을 요청해요.</p>
+  <div class="um-map"><svg class="um-geography" role="img" aria-label="파미가 실제 도로 좌표를 따라 움직이는 우도 관광 지도"></svg><div class="um-labels"></div><div class="um-north" aria-label="위쪽이 북쪽">↑<span>N</span></div><button type="button" class="um-guide-button" aria-haspopup="dialog" aria-controls="udo-map-guide-dialog">📍 <span class="" data-map-copy="mapGuide" data-localized="true">지도 설명</span></button><div class="um-scale"><span></span>500 m</div><button type="button" class="um-motion-control" aria-pressed="false">⏸ 움직임 멈추기</button></div>
+  <div class="um-tap-hint"><span class="um-tap-hand" aria-hidden="true">👆</span><div><strong>장소 이름을 눌러보세요!</strong><span>사진과 사장님의 설명이 나와요</span></div></div>
+  <div class="um-foot"><span>도로·해안선 © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> 기여자</span><span class="um-gps-privacy">위치는 내 기기의 지도에만 표시돼요</span></div>
+  <dialog class="um-dialog" aria-labelledby="coco-road-dialog-title">
+    <button type="button" class="um-dialog-close" aria-label="설명 팝업 닫기">×</button>
+    <div class="um-popup-body">
+      <div class="um-popup-photo"><img alt="우도 관광지 사진" width="960" height="640" decoding="async"/><button type="button" class="um-photo-expand" aria-pressed="false">사진 전체 보기</button><div class="um-photo-nav"><button type="button" class="um-photo-prev" aria-label="이전 사진">‹</button><span class="um-photo-count"></span><button type="button" class="um-photo-next" aria-label="다음 사진">›</button></div></div>
+      <div class="um-photo-credit"></div>
+      <div class="um-dialog-header"><div><div class="um-dialog-tag"></div><h3 id="coco-road-dialog-title"></h3></div></div>
+      <div class="um-tip-list"></div>
+      <div class="um-popup-copy"><div class="um-owner-label"></div><div class="um-owner-words"></div><div class="um-menu-tags"></div><p class="um-food-info"></p><div class="um-popup-links"></div></div>
+    </div>
+  </dialog>
+
+  <dialog id="udo-map-guide-dialog" class="um-guide-dialog" aria-labelledby="udo-map-guide-title">
+    <header><h2 id="udo-map-guide-title">지도 설명</h2><button type="button" class="um-guide-close" aria-label="지도 설명 닫기">×</button></header>
+    <div class="um-guide-content"></div>
+  </dialog>
+  <noscript><p class="um-fallback">우도 지도와 현재 위치를 보려면 JavaScript를 켜 주세요. 코코나라와 달콤아재 안내는 <a href="/#local">우도 로컬 안내</a>에서 확인할 수 있습니다.</p></noscript>
+</div>

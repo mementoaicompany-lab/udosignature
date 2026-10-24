@@ -25,30 +25,32 @@ export function createFerryStatusController({
     .map(key => [key, doc.getElementById('service-' + key)]));
   if (!elements.status) return null;
   let raw = null, failure = 'loading', active = null, stopped = false, expiryTimer, interval;
-  const put = (key, value) => { if (elements[key]) elements[key].textContent = value; };
+  const tr = value => globalThis.udoTranslate?.(value) ?? value;
+  const put = (key, value) => { if (elements[key]) elements[key].textContent = tr(value); };
   const clockText = epoch => new Intl.DateTimeFormat('ko-KR', {
     timeZone: 'Asia/Seoul', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
   }).format(new Date(epoch));
 
   function render() {
     if (stopped) return;
+    put('refresh', active ? '확인 중…' : '운항 안내 다시 확인');
     const epoch = now();
     const result = failure ? { confirmed: false, status: 'unconfirmed', reason: failure } : validateFerryRecord(raw, epoch);
     cancelLater(expiryTimer);
     const isDefault = !result.confirmed && ['missing', 'expired'].includes(result.reason);
     elements.status.dataset.state = isDefault ? 'default' : result.status;
     elements.status.dataset.confirmed = String(result.confirmed);
-    put('date', koreanDate(epoch) + ' · 한국시간');
+    put('date', koreanDate(epoch) + ' · ' + tr('한국시간'));
     put('source', SOURCE);
     put('last', '');
     if (elements.last) elements.last.hidden = true;
     if (result.confirmed) {
       const record = result.record;
       put('label', LABELS[result.status]);
-      put('message', MESSAGES[result.status] + (record.memo.trim() ? '\n운영자 메모: ' + record.memo : ''));
-      put('checked', '운영자 입력 ' + clockText(record.updatedAt) + ' · 한국시간 · 오늘 자정까지 적용');
+      put('message', tr(MESSAGES[result.status]) + (record.memo.trim() ? '\n' + tr('운영자 메모 (원문)') + ': ' + record.memo : ''));
+      put('checked', tr('운영자 입력') + ' ' + clockText(record.updatedAt) + ' · ' + tr('한국시간') + ' · ' + tr('오늘 자정까지 적용'));
       if (result.status === 'shortened' && elements.last) {
-        put('last', '운영자 입력 막배 ' + record.lastDeparture + ' · 적용 항구·방향 재확인 필요');
+        put('last', tr('운영자 입력 막배') + ' ' + record.lastDeparture + ' · ' + tr('적용 항구·방향 재확인 필요'));
         elements.last.hidden = false;
       }
       // An operator override expires exactly at Korea midnight.
@@ -129,6 +131,7 @@ export function createFerryStatusController({
     render();
     elements.refresh?.addEventListener('click', refresh);
     doc.addEventListener('visibilitychange', onVisible);
+    doc.addEventListener('udo:languagechange', render);
     interval = repeat(() => { render(); if (!doc.hidden) void refresh(); }, 60000);
     void refresh();
   }
@@ -140,6 +143,7 @@ export function createFerryStatusController({
     cancelRepeat(interval);
     elements.refresh?.removeEventListener('click', refresh);
     doc.removeEventListener('visibilitychange', onVisible);
+    doc.removeEventListener('udo:languagechange', render);
   }
   return { start, stop, refresh, render };
 }

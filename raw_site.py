@@ -27,6 +27,11 @@ def render_raw_page(root, page, config):
     if not source.is_relative_to(allowed):
         raise ValueError('rawFile must be inside ferry-source/html')
     content = source.read_text(encoding='utf-8')
+    for name in ('header', 'footer', 'island-map'):
+        marker = '<!-- SITE_' + name.upper().replace('-', '_') + ' -->'
+        if marker in content:
+            fragment = root / SOURCE_DIR / 'fragments' / (name + '.html')
+            content = content.replace(marker, fragment.read_text(encoding='utf-8'))
     head = re.search(r'(<head\b[^>]*>)(.*?)(</head\s*>)', content, re.I | re.S)
     if not head:
         raise ValueError(f'Missing head in {page["rawFile"]}')
