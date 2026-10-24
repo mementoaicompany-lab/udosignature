@@ -1,0 +1,9 @@
+.brand-identity{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0}
+.visitor-count{display:flex;flex-wrap:wrap;align-items:center;gap:5px 8px;margin:0;font:500 12px/1.55 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;letter-spacing:0;color:#65746d;text-decoration:none;white-space:normal;font-variant-numeric:tabular-nums}
+.visitor-count strong{font:800 13px/1.55 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;color:inherit;display:inline-block;min-width:1ch}
+.visitor-count .visitor-today{color:#a83b70}.visitor-count .visitor-separator{color:#abb5ae}
+.visitor-count:hover{text-decoration:none}.visitor-count:focus-visible{outline:2px solid currentColor;outline-offset:4px;border-radius:4px}
+.visitor-count[data-state="unavailable"]{color:#777}.brand-row .visitor-count{margin-left:80px}
+.signature .visitor-count{font-size:11px}.signature .visitor-count strong{font-size:12px}
+.peanut .visitor-today,.travel .visitor-today{color:#357050}.cafe .visitor-count,.cafe .visitor-today{color:#614737}
+@media(max-width:760px){.brand-identity{gap:3px}.visitor-count{font-size:11px;gap:3px 6px}.visitor-count strong{font-size:12px}.brand-row .visitor-count{margin-left:0}.brand-row{row-gap:10px}.header-inner .brand-identity{flex-shrink:0}.signature .visitor-count{font-size:10px}}

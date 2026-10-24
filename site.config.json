@@ -13,5 +13,11 @@
     "Udo Signature",
     "우도시그니처"
   ],
-  "indexNowKey": "d4ad0c2bc1344afeba3dc721c9e6c06b"
+  "indexNowKey": "d4ad0c2bc1344afeba3dc721c9e6c06b",
+  "visitorCounter": {
+    "site": "signature",
+    "startedAt": "2026-10-24",
+    "timezone": "Asia/Seoul",
+    "counting": "browser-per-day"
+  }
 }

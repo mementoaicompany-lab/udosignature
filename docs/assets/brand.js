@@ -1,4 +1,4 @@
-/* Events are local to this website. No remote collector, cookies, Firebase writes or visitor counter. */
+/* Events are local to this website. No remote click collector. The separate visitor-count.js owns brand visit totals. */
 (()=>{'use strict';const site=document.body.dataset.site;document.addEventListener('click',e=>{const a=e.target.closest('a');if(!a)return;const u=new URL(a.href,location.href);const type=u.hostname==='smartstore.naver.com'?'booking_click':u.protocol==='tel:'?'call_click':u.hostname==='map.naver.com'?'map_click':u.origin!==location.origin?'brand_click':'content_click';window.dispatchEvent(new CustomEvent('udosignature:event',{detail:{site,event:type,path:location.pathname,destination:u.origin+u.pathname}}));});})();
 
 // Progressive enhancement: all content and destinations also work without JS.

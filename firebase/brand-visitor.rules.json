@@ -1,0 +1,19 @@
+{
+  "$site": {
+    ".read": "($site === 'signature' || $site === 'coconara' || $site === 'udo' || $site === 'dalkom' || $site === 'peanut' || $site === 'cafe')",
+    ".write": "($site === 'signature' || $site === 'coconara' || $site === 'udo' || $site === 'dalkom' || $site === 'peanut' || $site === 'cafe') && newData.exists()",
+    ".validate": "newData.hasChildren(['total','today','day']) && newData.child('total').isNumber() && newData.child('total').val() % 1 === 0 && newData.child('total').val() <= 9007199254740991 && newData.child('today').isNumber() && newData.child('today').val() % 1 === 0 && newData.child('today').val() >= 1 && newData.child('today').val() <= newData.child('total').val() && newData.child('day').isNumber() && newData.child('day').val() === now - ((now + 32400000) % 86400000) && ((!data.exists() && newData.child('total').val() === 1 && newData.child('today').val() === 1) || (data.exists() && newData.child('total').val() === data.child('total').val() + 1 && newData.child('day').val() >= data.child('day').val() && ((newData.child('day').val() === data.child('day').val() && newData.child('today').val() === data.child('today').val() + 1) || (newData.child('day').val() > data.child('day').val() && newData.child('today').val() === 1))))",
+    "total": {
+      ".validate": true
+    },
+    "today": {
+      ".validate": true
+    },
+    "day": {
+      ".validate": true
+    },
+    "$other": {
+      ".validate": false
+    }
+  }
+}

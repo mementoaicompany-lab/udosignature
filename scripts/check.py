@@ -52,10 +52,15 @@ if C.get('private'):
 else:check((D/'CNAME').read_text().strip()==urlparse(BASE).hostname,'Wrong deployment domain')
 check(not (R/'.openai').exists(),'Unexpected Sites hosting configuration')
 for f in (D/'assets').glob('*.js'):
+ if f.name=='visitor-count.js':
+  text=f.read_text();check('/brandVisitsV1/' in text and '/visitors/' not in text and '/ferryStatus' not in text,'Visitor write isolation')
+  check('if-match' in text and 'host === HOSTS[site]' in text,'Visitor concurrency and host checks')
+  continue
  for token in ['firebase.initializeApp','firebase.database','firebase.auth','.setItem(','method:\'POST\'','method:\'PUT\'','method:\'PATCH\'','method:\'DELETE\'']:
   check(token not in f.read_text(),'Unapproved writes in '+f.name)
 if (R/'assets/ferry.js').exists():check("method:'GET'" in (R/'assets/ferry.js').read_text(),'Ferry must remain read-only')
 report=dict(site=C.get('project'),pages=len(files),indexed=len(sm),localReferences=refs,publicBytes=sum(f.stat().st_size for f in D.rglob('*') if f.is_file()),errors=errors)
-import runpy
+import runpy,subprocess
+check(subprocess.run(["node",str(R/"scripts/check-visitors.cjs")],cwd=R).returncode==0,"Visitor counter tests")
 runpy.run_path(str(R/'scripts/check-seo.py'))
 print(json.dumps(report,ensure_ascii=False,indent=2));raise SystemExit(bool(errors))
