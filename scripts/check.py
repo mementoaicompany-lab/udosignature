@@ -3,7 +3,6 @@ from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlparse,unquote
 import json,re,xml.etree.ElementTree as ET
-from runtime_policy import runtime_errors
 R=Path(__file__).resolve().parents[1];D=R/'docs';C=json.loads((R/'site.config.json').read_text());BASE=C['baseUrl'];prefix=urlparse(BASE).path
 meta=json.loads((R/('pages.json' if (R/'pages.json').exists() else 'seo.pages.json')).read_text());errors=[]
 class Page(HTMLParser):
@@ -26,7 +25,7 @@ for route,m in meta.items():
  robots=[a.get('content','') for t,a in p.tags if t=='meta' and a.get('name')=='robots'];check(len(robots)==1 and (('noindex' in robots[0])==bool(C.get('private') or m.get('noindex') or redirect)),route+': indexing policy')
  if redirect:check('location.replace' in s and 'http-equiv="refresh"' in s,route+': redirect fallback')
  else:
-  schema=re.findall(r'<script type="application/ld\+json">(.*?)</script>',s);check(bool(schema) or m.get('admin'),route+': structured data')
+  schema=re.findall(r'<script type="application/ld\+json">(.*?)</script>',s);check(bool(schema),route+': structured data')
   for payload in schema:check(json.loads(payload).get('@context')=='https://schema.org',route+': schema JSON')
  for t,a in p.tags:
   if t=='img':check(bool(a.get('alt')) and bool(a.get('width')) and bool(a.get('height')),route+': image metadata')
@@ -44,11 +43,7 @@ for route,m in meta.items():
     if u.path.endswith('/'):target=target/'index.html'
    check(target.is_file(),route+': broken local reference '+href)
    if u.fragment and target in files and 'http-equiv="refresh"' not in target.read_text():check(unquote(u.fragment) in files[target].ids,route+': missing anchor '+href)
- if not m.get('admin'):
-  check('firebase-app' not in s and 'firebase-auth' not in s,route+': copied admin runtime')
-  for t,a in p.tags:
-   if t=='script':check(not urlparse(a.get('src','')).path.startswith('/admin/'),route+': copied admin script')
- if m.get('admin'):check(m.get('noindex') and 'noindex,nofollow' in s,route+': admin indexing policy')
+ check('firebase-app' not in s and 'firebase-auth' not in s,route+': copied admin runtime')
 check(len(titles)==len(set(titles)),'Duplicate page titles');check(len(descs)==len(set(descs)),'Duplicate page descriptions')
 check(len(files)==len(meta),'Unexpected stale HTML files')
 sm=[n.text for n in ET.parse(D/'sitemap.xml').findall('.//{*}loc')];expected=[BASE+r for r,m in meta.items() if not (m.get('noindex') or m.get('redirect') or C.get('private'))];check(sm==expected,'Sitemap exact routes')
@@ -56,14 +51,9 @@ if C.get('private'):
  check(not (D/'CNAME').exists(),'Private preview has CNAME');check('Disallow: /' in (D/'robots.txt').read_text(),'Private robots');check(not (R/'.github').exists(),'Private preview has deployment workflow')
 else:check((D/'CNAME').read_text().strip()==urlparse(BASE).hostname,'Wrong deployment domain')
 check(not (R/'.openai').exists(),'Unexpected Sites hosting configuration')
-runtime_pages=[]
-for route,m in meta.items():
- path=D/route if route.endswith('.html') else D/route/'index.html'
- if path not in files:continue
- runtime_pages.append({'route':route,'admin':m.get('admin',False),'noindex':m.get('noindex',False),
-                       'scripts':[a['src'] for t,a in files[path].tags if t=='script' and a.get('src')]})
-runtime_scripts={f.relative_to(D).as_posix():f.read_text() for f in [*D.rglob('*.js'),*D.rglob('*.mjs')]}
-errors.extend(runtime_errors(runtime_scripts,runtime_pages))
+for f in (D/'assets').glob('*.js'):
+ for token in ['firebase.initializeApp','firebase.database','firebase.auth','.setItem(','method:\'POST\'','method:\'PUT\'','method:\'PATCH\'','method:\'DELETE\'']:
+  check(token not in f.read_text(),'Unapproved writes in '+f.name)
 if (R/'assets/ferry.js').exists():check("method:'GET'" in (R/'assets/ferry.js').read_text(),'Ferry must remain read-only')
 report=dict(site=C.get('project'),pages=len(files),indexed=len(sm),localReferences=refs,publicBytes=sum(f.stat().st_size for f in D.rglob('*') if f.is_file()),errors=errors)
 import runpy

@@ -12,10 +12,6 @@ jobs:
         run: |
           python3 build.py
           python3 scripts/check.py
-          python3 scripts/check-raw-import.py
-          python3 scripts/check-runtime-policy.py
-          node scripts/check-admin-write.mjs
-          node --test tests/*.test.mjs
-          find docs -type f \( -name '*.js' -o -name '*.mjs' \) -print0 | xargs -0 -r -n1 node --check
+          for script in assets/*.js; do node --check "$script"; done
           if [ -f scripts/check-ferry.cjs ]; then node scripts/check-ferry.cjs; fi
           git diff --exit-code -- docs

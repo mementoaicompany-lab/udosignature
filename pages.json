@@ -1,9 +1,29 @@
 {
+  "": {
+    "title": "우도 시그니처 | 우도여행·코코나라·달콤아재",
+    "description": "우도 여행을 한곳에서 편하게. 코코나라 전기차·스쿠터 예약, 달콤아재 우도땅콩 아이스크림, 우도 여행 지도·코스·배시간을 안내합니다.",
+    "label": "홈",
+    "file": "home.html"
+  },
+  "about/": {
+    "title": "우도 시그니처 소개 | 코코나라·달콤아재와 우도 로컬 브랜드",
+    "description": "우도 시그니처는 우도의 개성을 담은 로컬 브랜드와 여행 정보를 소개합니다. 코코나라, 달콤아재, 준비 중인 우도씨앗·우도 키에키를 만나보세요.",
+    "label": "브랜드 이야기",
+    "file": "about.html",
+    "updatedAt": "2026-09-23"
+  },
   "privacy/": {
     "title": "개인정보 안내 | 우도 시그니처",
     "description": "이 홈페이지의 외부 링크, 위치 기능, 개인정보 입력과 방문 분석에 관한 안내입니다.",
     "label": "개인정보 안내",
     "file": "privacy.html",
+    "noindex": true
+  },
+  "404.html": {
+    "title": "페이지를 찾을 수 없습니다 | portal",
+    "description": "요청한 페이지가 없습니다. 홈페이지에서 원하는 안내를 다시 선택해 주세요.",
+    "label": "페이지 없음",
+    "file": "404.html.html",
     "noindex": true
   },
   "udo/": {
@@ -53,92 +73,5 @@
     "description": "브랜드별로 안내 페이지가 이동했습니다. 새 주소에서 계속 확인해 주세요.",
     "redirect": "https://guide.udosignature.com/",
     "noindex": true
-  },
-  "brands/": {
-    "title": "우도 시그니처 브랜드 | 코코나라·달콤아재",
-    "description": "우도 시그니처의 로컬 브랜드를 만나보세요. 코코나라 전기차·스쿠터, 달콤아재 아이스크림과 준비 중인 브랜드를 소개합니다.",
-    "label": "우리의 브랜드",
-    "file": "brands.html",
-    "updatedAt": "2026-10-24"
-  },
-  "brands/story/": {
-    "title": "우도 시그니처 브랜드 이야기 | 우도의 로컬 브랜드",
-    "description": "우도 시그니처가 코코나라와 달콤아재를 통해 전하는 로컬 브랜드 이야기와 여행의 즐거움을 소개합니다.",
-    "label": "브랜드 이야기",
-    "file": "about.html",
-    "updatedAt": "2026-10-24"
-  },
-  "404.html": {
-    "title": "페이지를 찾을 수 없습니다 | 우도 시그니처",
-    "description": "우도 배시간 안내 홈에서 필요한 정보를 확인해 주세요.",
-    "label": "페이지를 찾을 수 없습니다",
-    "rawFile": "ferry-source/html/404.html",
-    "updatedAt": "2026-10-24",
-    "noindex": true
-  },
-  "about/": {
-    "title": "우도 시그니처 소개 · 운영자와 배시간 정보 출처 | 우도 시그니처",
-    "description": "코코나라가 운영하는 우도 배시간 여행 가이드. 운영 브랜드, 정보 출처, 당일 운항 안내의 확인 기준과 정정 연락처를 안내합니다.",
-    "label": "우도 시그니처 소개 · 운영자와 배시간 정보 출처",
-    "rawFile": "ferry-source/html/about/index.html",
-    "updatedAt": "2026-10-24"
-  },
-  "": {
-    "title": "우도 배시간 · 성산항·종달항 배시간표와 운항 확인 | 우도 시그니처",
-    "description": "우도 배시간과 월별 배시간표, 성산항·종달항 이용 방법, 왕복 요금과 결항 확인을 한곳에서. 코코나라가 전하는 우도 여행 준비 안내.",
-    "label": "우도 배시간 · 성산항·종달항 배시간표와 운항 확인",
-    "rawFile": "ferry-source/html/index.html",
-    "updatedAt": "2026-10-24"
-  },
-  "admin/": {
-    "title": "운항 안내 관리 | 우도 시그니처",
-    "description": "코코나라 운영자를 위한 우도 배 당일 운항 안내 관리. 등록된 관리자만 결항·단축 운항과 안내 문구를 수정할 수 있습니다.",
-    "label": "운항 안내 관리",
-    "rawFile": "ferry-source/html/admin/index.html",
-    "updatedAt": "2026-10-24",
-    "noindex": true,
-    "admin": true
-  },
-  "fares/": {
-    "title": "우도 배 요금 · 왕복 승선권과 신분증 준비 | 우도 시그니처",
-    "description": "우도 성인 왕복 배 요금과 승선 준비 안내. 선사 게시 요금의 기준, 차량 운임, 신분증과 어린이 서류 확인 방법을 정리했습니다.",
-    "label": "우도 배 요금 · 왕복 승선권과 신분증 준비",
-    "rawFile": "ferry-source/html/fares/index.html",
-    "updatedAt": "2026-10-24"
-  },
-  "jongdal-port/": {
-    "title": "종달항 우도 배시간 · 출발편과 돌아오는 배 확인 | 우도 시그니처",
-    "description": "종달항에서 우도 가는 배를 탈 때 확인할 사항. 성산항 시간표와 구분하고 출발·귀항 시각, 도착 항구, 운항 여부를 문의하세요.",
-    "label": "종달항 우도 배시간 · 출발편과 돌아오는 배 확인",
-    "rawFile": "ferry-source/html/jongdal-port/index.html",
-    "updatedAt": "2026-10-24"
-  },
-  "seongsan-port/": {
-    "title": "성산항 우도 배시간 · 배 타는 곳과 승선 순서 | 우도 시그니처",
-    "description": "성산항에서 우도 가는 배 이용 방법. 하우목동항·천진항 도착지 확인, 승선신고서와 신분증, 첫배·막배 확인을 안내합니다.",
-    "label": "성산항 우도 배시간 · 배 타는 곳과 승선 순서",
-    "rawFile": "ferry-source/html/seongsan-port/index.html",
-    "updatedAt": "2026-10-24"
-  },
-  "timetable/": {
-    "title": "우도 배시간표 · 월별 첫배·막배와 당일 확인 방법 | 우도 시그니처",
-    "description": "우도 배시간표를 성산항 첫배와 월별 막배로 나누어 확인하세요. 당일 결항·단축 운항 확인, 선사 전화와 공지까지 안내합니다.",
-    "label": "우도 배시간표 · 월별 첫배·막배와 당일 확인 방법",
-    "rawFile": "ferry-source/html/timetable/index.html",
-    "updatedAt": "2026-10-24"
-  },
-  "vehicle/": {
-    "title": "우도 차량 반입 · 렌터카 승선 전 확인할 조건 | 우도 시그니처",
-    "description": "우도 차량 반입과 렌터카 승선 계획 전 확인할 사항. 반입 제한과 예외 증빙, 차량 운임, 우도 안에서의 이동 방법을 안내합니다.",
-    "label": "우도 차량 반입 · 렌터카 승선 전 확인할 조건",
-    "rawFile": "ferry-source/html/vehicle/index.html",
-    "updatedAt": "2026-10-24"
-  },
-  "weather/": {
-    "title": "우도 배 결항 확인 · 날씨와 운항 공지 보는 방법 | 우도 시그니처",
-    "description": "우도 배 결항과 단축 운항을 확인하는 방법. 날씨 예보와 실제 운항을 구분하고 선사 공지, 전화 문의, 귀항편을 확인하세요.",
-    "label": "우도 배 결항 확인 · 날씨와 운항 공지 보는 방법",
-    "rawFile": "ferry-source/html/weather/index.html",
-    "updatedAt": "2026-10-24"
   }
 }
