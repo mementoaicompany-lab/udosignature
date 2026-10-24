@@ -20,6 +20,10 @@ for route,p in P.items():
  s=f.read_text();visible=' '.join(Text(s).parts)
  assert f'name="google-site-verification" content="{C["googleVerification"]}"' in s,route+' Google proof'
  assert f'name="naver-site-verification" content="{C["naverVerification"]}"' in s,route+' Naver proof'
+ if p.get('admin'):
+  assert p.get('noindex') and 'noindex,nofollow' in s,route+' admin indexing policy'
+  count+=1
+  continue
  g=json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>',s)[1])['@graph']
  web=next(x for x in g if x['@type']=='WebPage');assert web['url']==C['baseUrl']+route
  assert web['name']==p['title'] and web['description']==p['description'],route+' snippet/schema drift'

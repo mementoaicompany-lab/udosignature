@@ -4,15 +4,17 @@ from urllib.parse import urlparse
 from html import escape
 import json,shutil,re,hashlib
 from seo_support import enrich,faq_html
+from raw_site import render_raw_page, copy_raw_public
 R=Path(__file__).resolve().parent; C=json.loads((R/'site.config.json').read_text()); P=json.loads((R/'pages.json').read_text()); D=R/'docs'; BASE=C['baseUrl']; PREFIX=urlparse(BASE).path
 if D.exists():shutil.rmtree(D)
 D.mkdir();shutil.copytree(R/'assets',D/'assets')
+copy_raw_public(R, D)
 def e(s):return escape(str(s),quote=True)
 def rel(s=''):return PREFIX+s.lstrip('/')
 def asset(s):return rel('assets/'+s)
 def link(href,label,cls='btn'):return f'<a class="{cls}" href="{href}">{label}</a>'
 FAMILY=[('우도 시그니처','https://udosignature.com/'),('우도여행','https://udo.udosignature.com/'),('코코나라','https://coconara.udosignature.com/'),('달콤아재','https://dalkom-aje.udosignature.com/'),('우도씨앗 · 준비중','https://udopeanut.udosignature.com/'),('우도 키에키 · 준비중','https://udocafe.udosignature.com/')]
-navs={'signature':[('','홈'),('#brands','우리의 브랜드'),('about/','브랜드 이야기')],'travel':[('','홈·지도'),('places/','가볼만한곳'),('course/','여행코스'),('ferry/','배시간·가는 법')],'dalkom':[('','홈'),('menu/','아이스크림'),('story/','달콤한 이야기'),('visit/','오시는 길')],'peanut':[('','우도씨앗'),('#story','브랜드 이야기'),('#news','오픈 소식')],'cafe':[('','HOME / 우도 키에키'),('#mood','SPACE / 공간'),('#coffee','COFFEE / 커피'),('#opening','COMING SOON / 오픈 안내')]}
+navs={'signature':[('','홈'),('brands/#brands','우리의 브랜드'),('brands/story/','브랜드 이야기')],'travel':[('','홈·지도'),('places/','가볼만한곳'),('course/','여행코스'),('ferry/','배시간·가는 법')],'dalkom':[('','홈'),('menu/','아이스크림'),('story/','달콤한 이야기'),('visit/','오시는 길')],'peanut':[('','우도씨앗'),('#story','브랜드 이야기'),('#news','오픈 소식')],'cafe':[('','HOME / 우도 키에키'),('#mood','SPACE / 공간'),('#coffee','COFFEE / 커피'),('#opening','COMING SOON / 오픈 안내')]}
 nav=''.join(link(rel(r),label,'nav-link') for r,label in navs[C['theme']])
 family=''.join(link(u,n,'family-link') for n,u in FAMILY)
 def photograph(name,alt,eager=False,cls=''):
@@ -20,7 +22,9 @@ def photograph(name,alt,eager=False,cls=''):
  w,h=dims[name];return f'<img class="{cls}" src="{asset(name)}" width="{w}" height="{h}" alt="{e(alt)}" loading="{"eager" if eager else "lazy"}" {"fetchpriority=high" if eager else ""}>'
 for route,p in P.items():
  canonical=BASE+route
- if p.get('redirect'):
+ if p.get('rawFile'):
+  content=render_raw_page(R, p, C)
+ elif p.get('redirect'):
   target=p['redirect'];content=f'<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(p["title"])}</title><meta name="description" content="{e(p["description"])}"><meta name="robots" content="noindex,follow"><link rel="canonical" href="{e(target)}"><meta http-equiv="refresh" content="0;url={e(target)}"></head><body><h1>{e(p["title"])}</h1><p>이 안내의 새 주소입니다.</p><a href="{e(target)}">새 홈페이지에서 계속 보기</a><script>location.replace({json.dumps(target)}+location.search+location.hash)</script></body></html>'
  else:
   body=(R/'src'/p['file']).read_text()
@@ -37,7 +41,7 @@ for route,p in P.items():
   editorial=json.loads((R/'seo.content.json').read_text())
   body=body.replace('{{SEO_FAQ}}',faq_html(editorial.get(route,{}).get('faq',[])))
   extra=''
-  if route=='' and C['theme']=='signature':
+  if route in ['', 'brands/'] and C['theme']=='signature':
    extra+=f'<link rel="stylesheet" href="{asset("home-motion.css")}"><script src="{asset("home-motion.js")}" defer></script>'
   if '{{MAP}}' in body:
    from map_builder import render_map

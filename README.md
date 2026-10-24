@@ -47,3 +47,43 @@
 - 배포 후 `python3 scripts/indexnow.py --submit`으로 이 프로젝트의 검색 허용 URL만 네이버에 알릴 수 있습니다. 공개 페이지가 로컬 빌드와 동일한지 먼저 검사하며 수집·상위노출을 보장하지 않습니다.
 - Google Search Console은 각 사이트의 sitemap.xml을 제출합니다. 일반 웹페이지에 Google Indexing API를 사용하지 않습니다.
 - 키워드 조사 기준표는 `SEO-KEYWORDS.md`입니다. 같은 의도의 예약·대여·가격·렌트 페이지를 복제하지 않습니다.
+
+## 배시간 홈페이지 통합 입력
+
+기존 브랜드 허브는 `/brands/`, 브랜드 이야기는 `/brands/story/`에 보존합니다.
+완성형 정적 배시간 사이트는 `scripts/import-ferry-site.py`로 가져옵니다. 이 스크립트는
+GitHub에 쓰거나 배포하지 않습니다. 파일 복사와 manifest 갱신만 수행합니다.
+
+```sh
+python3 scripts/import-ferry-site.py /absolute/path/to/udo-ferry/dist
+python3 build.py
+python3 scripts/check.py
+python3 scripts/check-raw-import.py
+python3 scripts/check-runtime-policy.py
+node scripts/check-admin-write.mjs
+node scripts/check-motion.cjs
+```
+
+- HTML 원본: `ferry-source/html/`, 공개 CSS·JS·data·사진: `ferry-source/public/`.
+- `pages.json`의 `rawFile`은 완성형 HTML을 가리킵니다. 빌드는 본문과 구조화 데이터를 보존하고
+  head의 robots 및 기존 Google/Naver 소유확인 meta만 주입합니다.
+- 새 사이트의 `/styles.css`, `/main.js`, `/data/...` 경로는 그대로 유지됩니다.
+- 기존 `assets/`와 이름이 같은 새 파일은 내용이 동일할 때만 허용합니다. 내용이 다르면
+  import가 실패하므로 새 파일의 이름/참조를 바꾸어 기존 브랜드 화면을 보존합니다.
+- CNAME, `.nojekyll`, robots.txt, sitemap.xml, IndexNow 소유확인 파일은 기존 빌더가 관리합니다.
+  가져온 dist의 이 파일들로 기존 도메인이나 색인 정책을 덮어쓰지 않습니다.
+- `/admin/` HTML은 `noindex,nofollow`이며 사이트맵에서 제외됩니다. 관리자 코드 예외는
+  이 문서에서만 사용하는 `/admin.js`와 `/admin-core.mjs` 두 모듈로 한정합니다.
+  일반 공개 페이지에서 직접 또는 모듈 import를 거쳐 이 코드를 불러오면 검증이 실패합니다.
+- 관리자 SDK의 참조는 기존 Firebase 프로젝트의 `ferryStatus`와 서버시각·접속상태 `.info`
+  읽기 두 곳에 한정합니다. 유일한 데이터 쓰기는 관리자 UID, 연결, 서버시각, 스키마를
+  검증한 뒤 서버 응답을 기다리는 `ref.set(payload)`입니다. 브라우저 영구 저장이나 별도
+  HTTP 쓰기는 허용하지 않습니다. 이 회귀검사는 서버 Firebase 보안 규칙을 대체하지 않습니다.
+- 관리자 문서는 JSON-LD를 생략할 수 있지만 title·description·canonical·H1·로컬 참조와
+  소유확인 태그 검사는 유지됩니다. 공개 HTML은 기존 SEO 검사를 모두 적용합니다.
+- 같은 dist를 다시 가져오면 이전에 가져온 입력과 경로를 갱신합니다. 현재 dist에서 빠진
+  이전 imported 경로는 제거하고, 그 경로가 원래 기존 페이지였다면 원래 manifest를 복원합니다.
+- HTML 원본 바이트가 동일한 재가져오기는 기존 updatedAt을 보존하여 사이트맵 lastmod를
+  불필요하게 갱신하지 않습니다.
+- 소스(`ferry-source/`, pages.json, 빌더)와 생성물(`docs/`)을 함께 커밋해야 합니다.
+  docs만 직접 수정하면 다음 빌드가 그 수정을 덮어씁니다.
